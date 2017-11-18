@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.keegan.john.justcook.MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LOG IN"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="36sp"
+        android:textStyle="normal|bold"
+        android:textAlignment="center"
+        android:id="@+id/logInTextView"
+        android:textColor="@android:color/black" />
+
+    <Button
+        android:text="Submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button2"
+        android:layout_above="@+id/forgotButton"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2"
+        android:layout_alignRight="@+id/editText2"
+        android:layout_alignEnd="@+id/editText2"
+        android:onClick="clickFunctionSubmit" />
+
+    <Button
+        android:text="Create Account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button3"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/forgotButton"
+        android:layout_alignStart="@+id/forgotButton"
+        android:layout_marginBottom="19dp"
+        android:layout_alignRight="@+id/forgotButton"
+        android:layout_alignEnd="@+id/forgotButton"
+        android:onClick="clickFunctionCreate" />
+
+    <Button
+        android:text="Forgot Password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/forgotButton"
+        android:onClick="clickFunctionForgot (MainActivity)"
+        android:layout_above="@+id/button3"
+        android:layout_alignLeft="@+id/button2"
+        android:layout_alignStart="@+id/button2"
+        android:layout_alignRight="@+id/button2"
+        android:layout_alignEnd="@+id/button2" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/usernameTxt"
+        android:layout_below="@+id/logInTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="23dp"
+        android:hint="Enter Username" />
+
+    <TextView
+        android:text="Username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:textSize="20sp"
+        android:layout_below="@+id/logInTextView"
+        android:layout_alignLeft="@+id/usernameTxt"
+        android:layout_alignStart="@+id/usernameTxt" />
+
+    <TextView
+        android:text="Password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/usernameTxt"
+        android:layout_alignLeft="@+id/usernameTxt"
+        android:layout_alignStart="@+id/usernameTxt"
+        android:id="@+id/textView3"
+        android:textSize="20sp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:layout_below="@+id/textView3"
+        android:layout_alignRight="@+id/usernameTxt"
+        android:layout_alignEnd="@+id/usernameTxt"
+        android:id="@+id/passwordTxt"
+        android:hint="Enter Password" />
+
+</RelativeLayout>
