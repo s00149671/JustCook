@@ -10,8 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-private Button button;
-
+    
     public void clickFunctionSubmit(View view) {
 
         EditText usernameTxt = (EditText) findViewById(R.id.usernameTxt);
@@ -22,26 +21,28 @@ private Button button;
         Toast.makeText(MainActivity.this, "Welcome" + usernameTxt.getText().toString() , Toast.LENGTH_LONG).show();
     }
 
-    //public void clickFunctionForget(View view) {
-
-        //Intent forgot = new Intent(MainActivity.this, ForgotPassword.class);
-       // startActivity(forgot);
-    //}
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    button = (Button) findViewById(R.id.forgotButton);
-        button.setOnClickListener(new View.OnClickListener() {
+
+        Button forgotButton=(Button)findViewById(R.id.forgotButton);
+        Button createButton=(Button)findViewById(R.id.createButton);
+
+        forgotButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                openForgotPassword();
+            public void onClick(View v) {
+                Intent forgot = new Intent(MainActivity.this, ForgotPassword.class);
+                startActivity(forgot);
             }
         });
-    }
 
-    public void openForgotPassword() {
-        Intent forgot = new Intent(MainActivity.this, ForgotPassword.class);
-        startActivity(forgot);
+        createButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent create = new Intent(MainActivity.this, CreateAccount.class);
+                startActivity(create);
+            }
+        });
     }
 }
