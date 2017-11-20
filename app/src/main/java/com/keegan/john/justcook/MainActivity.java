@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.Parse;
+
 public class MainActivity extends AppCompatActivity {
 private Button button;
 
@@ -31,6 +33,12 @@ private Button button;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+       // Add your initialization code here
+
+
+
     button = (Button) findViewById(R.id.forgotButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
