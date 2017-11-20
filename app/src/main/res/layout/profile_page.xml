@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="225dp"
+    android:background="@drawable/ProfileBackground"
+    android:weightSum="1">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="101dp"
+        android:layout_marginTop="20dp"
+        android:adjustViewBounds="false"
+        android:layerType="none"
+        app:srcCompat="@drawable/ProfilePicture"
+        android:layout_weight="0.82" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Mark Hunt"
+        android:textColor="black"
+        android:textSize="42sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Chef"
+        android:textColor="black"
+        android:textSize="22sp"/>
+
+</LinearLayout>
