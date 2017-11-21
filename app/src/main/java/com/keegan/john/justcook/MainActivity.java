@@ -10,6 +10,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.parse.Parse;
+import com.parse.ParseAnalytics;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.SaveCallback;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +30,32 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Parse.enableLocalDatastore(this);
+
+        Parse.initialize(new Parse.Configuration.Builder(getApplicationContext())
+                .applicationId("")
+                .clientKey("")
+                .server("") //trailing slash
+                .build());
+
+        ParseObject User = new ParseObject("User");
+        User.put("username", "Fidel");
+        User.put("password", "12345");
+        User.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+
+                if (e == null) {
+                    Log.i("SaveInBackGround", "Successful");
+                } else {
+                    Log.i("SaveInBackGround", "Failed.error" + e.toString());
+                }
+            }
+        });
+        ParseAnalytics.trackAppOpenedInBackground(getIntent());
+
+
         setContentView(R.layout.activity_main);
 
         Button forgotButton=(Button)findViewById(R.id.forgotButton);
