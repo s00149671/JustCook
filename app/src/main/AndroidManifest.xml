@@ -23,6 +23,9 @@
         <activity android:name=".CreateAccount"></activity>
         <activity android:name=".ForgotPassword"></activity>
         <activity android:name=".Profile"></activity>
+        <activity android:name=".MainPage"></activity>
+
+
     </application>
 
 </manifest>

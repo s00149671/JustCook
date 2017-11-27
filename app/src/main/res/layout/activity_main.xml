@@ -25,7 +25,7 @@
         android:text="Submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button2"
+        android:id="@+id/submitbutton"
         android:layout_above="@+id/forgotButton"
         android:layout_alignLeft="@+id/textView2"
         android:layout_alignStart="@+id/textView2"
@@ -43,20 +43,18 @@
         android:layout_alignStart="@+id/forgotButton"
         android:layout_marginBottom="19dp"
         android:layout_alignRight="@+id/forgotButton"
-        android:layout_alignEnd="@+id/forgotButton"
-        android:onClick="clickFunctionCreate" />
+        android:layout_alignEnd="@+id/forgotButton" />
 
     <Button
         android:text="Forgot Password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/forgotButton"
-        android:onClick="clickFunctionForgot (MainActivity)"
         android:layout_above="@+id/createButton"
-        android:layout_alignLeft="@+id/button2"
-        android:layout_alignStart="@+id/button2"
-        android:layout_alignRight="@+id/button2"
-        android:layout_alignEnd="@+id/button2" />
+        android:layout_alignLeft="@+id/submitbutton"
+        android:layout_alignStart="@+id/submitbutton"
+        android:layout_alignRight="@+id/submitbutton"
+        android:layout_alignEnd="@+id/submitbutton" />
 
     <EditText
         android:layout_width="wrap_content"

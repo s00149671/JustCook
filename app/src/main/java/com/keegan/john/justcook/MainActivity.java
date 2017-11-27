@@ -58,8 +58,9 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        Button forgotButton=(Button)findViewById(R.id.forgotButton);
-        Button createButton=(Button)findViewById(R.id.createButton);
+        Button forgotButton = (Button) findViewById(R.id.forgotButton);
+        Button createButton = (Button) findViewById(R.id.createButton);
+        Button submitButton = (Button) findViewById(R.id.submitbutton);
 
         forgotButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +75,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent create = new Intent(MainActivity.this, CreateAccount.class);
                 startActivity(create);
+            }
+        });
+
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent submit = new Intent(MainActivity.this, MainPage.class);
+                startActivity(submit);
             }
         });
     }
