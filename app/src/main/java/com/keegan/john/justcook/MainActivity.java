@@ -28,32 +28,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Parse.enableLocalDatastore(this);
-
-        Parse.initialize(new Parse.Configuration.Builder(getApplicationContext())
-                .applicationId("")
-                .clientKey("")
-                .server("") //trailing slash
-                .build());
-
-        ParseObject User = new ParseObject("User");
-        User.put("username", "Fidel");
-        User.put("password", "12345");
-        User.saveInBackground(new SaveCallback() {
-            @Override
-            public void done(ParseException e) {
-
-                if (e == null) {
-                    Log.i("SaveInBackGround", "Successful");
-                } else {
-                    Log.i("SaveInBackGround", "Failed.error" + e.toString());
-                }
-            }
-        });
-        ParseAnalytics.trackAppOpenedInBackground(getIntent());
+//
+//        Parse.enableLocalDatastore(this);
+//
+//        Parse.initialize(new Parse.Configuration.Builder(getApplicationContext())
+//                .applicationId("")
+//                .clientKey("")
+//                .server("") //trailing slash
+//                .build());
+//
+//        ParseObject User = new ParseObject("User");
+//        User.put("username", "Fidel");
+//        User.put("password", "12345");
+//        User.saveInBackground(new SaveCallback() {
+//            @Override
+//            public void done(ParseException e) {
+//
+//                if (e == null) {
+//                    Log.i("SaveInBackGround", "Successful");
+//                } else {
+//                    Log.i("SaveInBackGround", "Failed.error" + e.toString());
+//                }
+//            }
+//        });
+//        ParseAnalytics.trackAppOpenedInBackground(getIntent());
 
 
         setContentView(R.layout.activity_main);
