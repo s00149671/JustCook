@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         EditText passwordTxt = (EditText) findViewById(R.id.passwordTxt);
         Log.i("Password", passwordTxt.getText().toString());
-        Toast.makeText(MainActivity.this, "Welcome" + usernameTxt.getText().toString() , Toast.LENGTH_LONG).show();
+        Toast.makeText(MainActivity.this, "Welcome" +" "+ usernameTxt.getText().toString() , Toast.LENGTH_LONG).show();
     }
 
     @Override

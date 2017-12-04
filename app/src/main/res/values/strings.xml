@@ -2,5 +2,21 @@
     <string name="app_name">JustCook</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
-    <string name="Main">Main</string>#
+    <string name="Main">Main</string>
+    <string name="main_page">main page</string>
+    <string name="ingredience">ingredience</string>
+    <string name="button">Button</string>
+    
+    
+    <string-array name="ingredients_items">
+        <item>Onion</item>
+        <item>Garlic</item>
+        <item>Carrot</item>
+        <item>Tomato</item>
+        <item>Bell Pepper</item>
+        <item>Mushroom</item>
+        <item>Broccoli</item>
+        <item>Kale</item>
+        <item>Chillie Pepper</item>
+    </string-array>
 </resources>
