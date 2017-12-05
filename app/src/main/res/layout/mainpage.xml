@@ -6,7 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/drawerLayout">
+    android:id="@+id/drawerLayout"
+    app:popupTheme="@style/CustomPopupStyle" >
+
 
 <android.support.v7.widget.LinearLayoutCompat
     android:layout_width="wrap_content"
@@ -20,10 +22,11 @@
         android:id="@+id/btnVeg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvVeg"
+        android:layout_marginLeft="112dp"
+        android:layout_marginStart="112dp"
         android:text="Vegetables" />
     <TextView
         android:layout_width="wrap_content"

@@ -3,6 +3,7 @@ package com.keegan.john.justcook;
 import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 
 import java.util.ArrayList;
 
@@ -126,8 +128,55 @@ public class MainPage extends AppCompatActivity {
         {
             return true;
         }
+
+        //Options Selected Nagigation
+
+        switch (item.getItemId())
+        {
+            case R.id.profile:
+                //profile
+                Intent profile = new Intent(this,Profile.class);
+                startActivity(profile);
+                break;
+            case R.id.settings:
+                //settings
+                Intent settings = new Intent(this,SettingsActivity.class);
+                startActivity(settings);
+                break;
+            case R.id.signout:
+                //Signout
+                Intent signout = new Intent(this,MainActivity.class);
+                startActivity(signout);
+                Toast.makeText(getApplicationContext(), "Signed Out",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_Vegetables:
+                //Veg List
+                Toast.makeText(getApplicationContext(), "Vegitables",Toast.LENGTH_SHORT).show();
+                break;
+
+
+            default:
+                //unkown error
+        }
         return super.onOptionsItemSelected(item);
+
     }
+
+    //options Menu
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.options_menu,menu);
+
+        return super.onCreateOptionsMenu(menu);
+
+
+    }
+
+//
+
+
 
     //Side Nav Button Control
 //    @SuppressWarnings("StatementWithEmptyBody")

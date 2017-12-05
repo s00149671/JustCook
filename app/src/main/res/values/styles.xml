@@ -8,4 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <!--Drop down option menu doesnt work style doesnt work-->
+    <style name="CustomPopupStyle" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:colorBackground">@color/colorAccent</item>
+        <item name="overlapAnchor">false</item>
+        <item name="android:dropDownVerticalOffset">-4dp</item>
+    </style>
+
 </resources>
