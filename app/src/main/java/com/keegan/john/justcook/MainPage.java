@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ImageButton;
 
 
 import java.util.ArrayList;
@@ -34,10 +35,25 @@ public class MainPage extends AppCompatActivity {
     boolean[] checkedIngredients;
     ArrayList<Integer> mUserItems = new ArrayList<>();
 
+    //Floating Image Button
+    ImageButton floatingButton;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainpage);
+
+        //Floating Image Button
+        floatingButton = (ImageButton) findViewById(R.id.floatBtn);
+        floatingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),
+                        "Float Btn Works",Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout,R.string.open,R.string.close);

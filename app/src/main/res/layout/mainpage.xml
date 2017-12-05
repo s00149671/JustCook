@@ -35,6 +35,16 @@
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:id="@+id/tvVeg"/>
+
+    <ImageButton
+        android:id="@+id/floatBtn"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/oval">
+    </ImageButton>
 </RelativeLayout>
 
 
