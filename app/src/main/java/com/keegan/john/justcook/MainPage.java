@@ -44,6 +44,25 @@ public class MainPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainpage);
 
+
+        ImageButton lasagneBtn = (ImageButton) findViewById(R.id.lasagneBtn);
+        ImageButton thaiBtn = (ImageButton) findViewById(R.id.thaiBtn);
+
+        lasagneBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent recipe1 = new Intent(MainPage.this, RecipeInstructions.class);
+                startActivity(recipe1);
+            }
+        });
+        lasagneBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent recipe2 = new Intent(MainPage.this, RecipeInstructions.class);
+                startActivity(recipe2);
+            }
+        });
+
         //Floating Image Button
         floatingButton = (ImageButton) findViewById(R.id.floatBtn);
         floatingButton.setOnClickListener(new View.OnClickListener() {
@@ -64,75 +83,75 @@ public class MainPage extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //multiple choice list dialog
-        mVeg = (Button) findViewById(R.id.btnVeg);
-        mIngredientsSelected = (TextView) findViewById(R.id.tvVeg);
+//        mVeg = (Button) findViewById(R.id.btnVeg);
+//        mIngredientsSelected = (TextView) findViewById(R.id.tvVeg);
 
         //passing the value
-        ingredientsItems = getResources().getStringArray(R.array.ingredients_items);
-        checkedIngredients = new boolean[ingredientsItems.length];
-
-        //when you click on the buton it will show the dialog
-        mVeg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainPage.this);
-                mBuilder.setTitle("Vegetables");
-                mBuilder.setMultiChoiceItems(ingredientsItems, checkedIngredients, new DialogInterface.OnMultiChoiceClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int position, boolean isChecked) {
-                        if(isChecked){
-                            if(!mUserItems.contains(position))
-                            {
-                                mUserItems.add(position);
-                            }
-                            else if (mUserItems.contains(position)){
-                                mUserItems.remove(position);
-                            }
-                        }
-                    }
-                });
-                mBuilder.setCancelable(false);
-                mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int which) {
-                        String item = "";
-                        for(int i = 0; i < mUserItems.size(); i++)
-                        {
-                            item = item + ingredientsItems[mUserItems.get(i)];
-                            //check to see if it is the last item. add "," if its not the last item
-                            if(i != mUserItems.size() -1);
-                            {
-                                item = item + ",";
-                            }
-                        }
-                        mIngredientsSelected.setText(item);
-                    }
-                });
-                mBuilder.setNegativeButton("Dismiss", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                    }
-                });
-                //clear btn
-                mBuilder.setNeutralButton("Clear all", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int which) {
-                        for(int i = 0; i< checkedIngredients.length; i++)
-                        {
-                            checkedIngredients[i] = false;
-                            mUserItems.clear();
-                            mIngredientsSelected.setText("");
-
-                        }
-                    }
-                });
-
-                AlertDialog mDialog = mBuilder.create();
-                mDialog.show();
-
-            }
-        });
+//        ingredientsItems = getResources().getStringArray(R.array.ingredients_items);
+//        checkedIngredients = new boolean[ingredientsItems.length];
+//
+//        //when you click on the buton it will show the dialog
+//        mVeg.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                final AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainPage.this);
+//                mBuilder.setTitle("Vegetables");
+//                mBuilder.setMultiChoiceItems(ingredientsItems, checkedIngredients, new DialogInterface.OnMultiChoiceClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int position, boolean isChecked) {
+//                        if(isChecked){
+//                            if(!mUserItems.contains(position))
+//                            {
+//                                mUserItems.add(position);
+//                            }
+//                            else if (mUserItems.contains(position)){
+//                                mUserItems.remove(position);
+//                            }
+//                        }
+//                    }
+//                });
+//                mBuilder.setCancelable(false);
+//                mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int which) {
+//                        String item = "";
+//                        for(int i = 0; i < mUserItems.size(); i++)
+//                        {
+//                            item = item + ingredientsItems[mUserItems.get(i)];
+//                            //check to see if it is the last item. add "," if its not the last item
+//                            if(i != mUserItems.size() -1);
+//                            {
+//                                item = item + ",";
+//                            }
+//                        }
+//                        mIngredientsSelected.setText(item);
+//                    }
+//                });
+//                mBuilder.setNegativeButton("Dismiss", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        dialogInterface.dismiss();
+//                    }
+//                });
+//                //clear btn
+//                mBuilder.setNeutralButton("Clear all", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int which) {
+//                        for(int i = 0; i< checkedIngredients.length; i++)
+//                        {
+//                            checkedIngredients[i] = false;
+//                            mUserItems.clear();
+//                            mIngredientsSelected.setText("");
+//
+//                        }
+//                    }
+//                });
+//
+//                AlertDialog mDialog = mBuilder.create();
+//                mDialog.show();
+//
+//            }
+//        });
 
 
     }
@@ -165,10 +184,10 @@ public class MainPage extends AppCompatActivity {
                 startActivity(signout);
                 Toast.makeText(getApplicationContext(), "Signed Out",Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.nav_Vegetables:
-                //Veg List
-                Toast.makeText(getApplicationContext(), "Vegitables",Toast.LENGTH_SHORT).show();
-                break;
+//            case R.id.nav_Vegetables:
+//                //Veg List
+//                Toast.makeText(getApplicationContext(), "Vegitables",Toast.LENGTH_SHORT).show();
+//                break;
 
 
             default:

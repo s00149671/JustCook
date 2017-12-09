@@ -22,6 +22,7 @@
         <activity android:name=".ForgotPassword" />
         <activity android:name=".Profile" />
         <activity android:name=".MainPage" />
+        <activity android:name=".RecipeInstructions"/>
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"></activity>

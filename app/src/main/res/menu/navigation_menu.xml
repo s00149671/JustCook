@@ -3,17 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-    <item
-        android:id="@+id/nav_Meat"
-        android:icon="@drawable/chickenleg"
-        android:title="Meat" />
-    <item android:id="@+id/nav_Fish"
-        android:icon="@drawable/hotfishbone"
-        android:title="Fish"/>
+    <!--<item-->
+        <!--android:id="@+id/nav_Meat"-->
+        <!--android:icon="@drawable/chickenleg"-->
+        <!--android:title="Meat" />-->
+    <!--<item android:id="@+id/nav_Fish"-->
+        <!--android:icon="@drawable/hotfishbone"-->
+        <!--android:title="Fish"/>-->
 
-    <item android:id="@+id/nav_Vegetables"
-        android:icon="@drawable/freshcarrot"
-        android:title="Vegetables" />
+    <!--<item android:id="@+id/nav_Vegetables"-->
+        <!--android:icon="@drawable/freshcarrot"-->
+        <!--android:title="Vegetables" />-->
 
 
 </menu>
