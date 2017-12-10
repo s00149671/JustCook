@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ImageButton;
@@ -28,6 +29,12 @@ public class MainPage extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
 
+    //GRIDVIEW TEST
+//    GridView gridView;
+//
+//    String txtList[] = {"Lasagne","Thai Red Curry"};
+//
+//    int foodPic[] = {R.drawable.lasagne, R.drawable.thai};
     //multiple choice list dialog
     Button mVeg;
     TextView mIngredientsSelected;
@@ -43,6 +50,13 @@ public class MainPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainpage);
+
+        //GRIDVIEW TEST
+//        gridView = (GridView) findViewById(R.id.gridView);
+//        GridTrial gridTrial = new GridTrial(MainPage.this,foodPic,txtList);
+//        gridView.setAdapter(gridTrial);
+
+
 
 
         ImageButton lasagneBtn = (ImageButton) findViewById(R.id.lasagneBtn);

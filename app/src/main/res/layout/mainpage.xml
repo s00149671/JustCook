@@ -14,57 +14,60 @@
 <android.support.v7.widget.LinearLayoutCompat
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
-<ScrollView
+
+    <ScrollView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
-<RelativeLayout
+
+    <RelativeLayout
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+        android:layout_height="wrap_content">
 
-    <ImageButton
-        android:id="@+id/lasagneBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        app:srcCompat="@drawable/lasagne" />
 
-    <ImageButton
-        android:id="@+id/thaiBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/lasagneBtn"
-        android:layout_marginTop="53dp"
-        app:srcCompat="@drawable/thai" />
-    <!--<Button-->
-        <!--android:id="@+id/btnVeg"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentLeft="true"-->
-        <!--android:layout_alignParentStart="true"-->
-        <!--android:layout_below="@+id/tvVeg"-->
-        <!--android:layout_marginLeft="19dp"-->
-        <!--android:layout_marginStart="19dp"-->
-        <!--android:text="@string/vegetables" />-->
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:gravity="center"-->
-        <!--android:id="@+id/tvVeg"/>-->
+        <ImageButton
+            android:id="@+id/lasagneBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/lasagne" />
 
-    <ImageButton
-        android:id="@+id/floatBtn"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:background="@drawable/oval" android:contentDescription="TODO">
-    </ImageButton>
+        <ImageButton
+            android:id="@+id/thaiBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/lasagneBtn"
+            android:layout_marginTop="53dp"
+            app:srcCompat="@drawable/thai" />
+        <Button
+            android:id="@+id/btnVeg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tvVeg"
+            android:layout_marginLeft="19dp"
+            android:layout_marginStart="19dp"
+            android:text="@string/vegetables" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:id="@+id/tvVeg"/>
+
+        <ImageButton
+            android:id="@+id/floatBtn"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/oval" android:contentDescription="TODO">
+        </ImageButton>
 </RelativeLayout>
 </ScrollView>
 
