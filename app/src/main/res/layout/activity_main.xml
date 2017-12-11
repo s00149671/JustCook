@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -8,94 +9,101 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/gradient"
     tools:context="com.keegan.john.justcook.MainActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="LOG IN"
-        android:textAppearance="@style/TextAppearance.AppCompat"
-        android:textSize="36sp"
-        android:textStyle="normal|bold"
-        android:textAlignment="center"
-        android:id="@+id/logInTextView"
-        android:textColor="@android:color/black" />
-
     <Button
-        android:text="Submit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/submitbutton"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
         android:layout_above="@+id/forgotButton"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2"
-        android:layout_alignRight="@+id/editText2"
-        android:layout_alignEnd="@+id/editText2"
-        android:onClick="clickFunctionSubmit" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/sky"
+        android:onClick="clickFunctionSubmit"
+        android:text="Submit"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
 
     <Button
-        android:text="Create Account"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/createButton"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/forgotButton"
-        android:layout_alignStart="@+id/forgotButton"
-        android:layout_marginBottom="19dp"
-        android:layout_alignRight="@+id/forgotButton"
-        android:layout_alignEnd="@+id/forgotButton" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="21dp"
+        android:background="@drawable/sky"
+        android:text="Create Account"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
 
     <Button
-        android:text="Forgot Password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/forgotButton"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
         android:layout_above="@+id/createButton"
-        android:layout_alignLeft="@+id/submitbutton"
-        android:layout_alignStart="@+id/submitbutton"
-        android:layout_alignRight="@+id/submitbutton"
-        android:layout_alignEnd="@+id/submitbutton" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/sky"
+        android:text="Forgot Password"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
         android:id="@+id/usernameTxt"
-        android:layout_below="@+id/logInTextView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="23dp"
-        android:hint="Enter Username" />
-
-    <TextView
-        android:text="Username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/passwordTxt"
+        android:layout_alignLeft="@+id/passwordTxt"
+        android:layout_alignStart="@+id/passwordTxt"
+        android:layout_marginBottom="69dp"
+        android:ems="10"
+        android:hint="Enter Username"
+        android:inputType="textPersonName" />
+
+    <TextView
         android:id="@+id/textView"
-        android:textSize="20sp"
-        android:layout_below="@+id/logInTextView"
-        android:layout_alignLeft="@+id/usernameTxt"
-        android:layout_alignStart="@+id/usernameTxt" />
-
-    <TextView
-        android:text="Password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/usernameTxt"
-        android:layout_alignLeft="@+id/usernameTxt"
-        android:layout_alignStart="@+id/usernameTxt"
+        android:layout_above="@+id/usernameTxt"
+        android:layout_alignEnd="@+id/textView3"
+        android:layout_alignRight="@+id/textView3"
+        android:layout_marginBottom="12dp"
+        android:text="Username"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+
+    <TextView
         android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/passwordTxt"
+        android:layout_alignLeft="@+id/passwordTxt"
+        android:layout_alignStart="@+id/passwordTxt"
+        android:text="Password"
+        android:textColor="@android:color/black"
         android:textSize="20sp" />
 
     <EditText
+        android:id="@+id/passwordTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
+        android:layout_above="@+id/submitbutton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="47dp"
         android:ems="10"
-        android:layout_below="@+id/textView3"
-        android:layout_alignRight="@+id/usernameTxt"
-        android:layout_alignEnd="@+id/usernameTxt"
-        android:id="@+id/passwordTxt"
-        android:hint="Enter Password" />
+        android:hint="Enter Password"
+        android:inputType="textPassword" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/logInTextView"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/cook" />
 
 </RelativeLayout>
