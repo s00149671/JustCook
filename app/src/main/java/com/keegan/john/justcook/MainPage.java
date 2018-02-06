@@ -216,7 +216,7 @@ public class MainPage extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        getMenuInflater().inflate(R.menu.options_menu,menu);
+
         getMenuInflater().inflate(R.menu.navigation_menu,menu);
 
 
@@ -225,21 +225,21 @@ public class MainPage extends AppCompatActivity {
 
     }
 
-//
+
 
 
 
     //Side Nav Button Control
-//    @SuppressWarnings("StatementWithEmptyBody")
-//    public  boolean onNavigationItemSelected(MenuItem item) {
-//        int id = item.getItemId();
-//        FragmentManager fragmentManager = getFragmentManager();
-//
-//        if (id == R.id.nav_Meat){
-//            Toast.makeText(MainPage.this, "Welcome", Toast.LENGTH_LONG).show();
-//        }
-//
-//        return true;
-//
-//    }
+    @SuppressWarnings("StatementWithEmptyBody")
+    public  boolean onNavigationItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        FragmentManager fragmentManager = getFragmentManager();
+
+        if (id == R.id.nav_Meat){
+            Toast.makeText(MainPage.this, "Welcome", Toast.LENGTH_LONG).show();
+        }
+
+        return true;
+
+    }
 }

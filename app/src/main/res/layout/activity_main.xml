@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/gradient"
+    android:background="@color/primaryLightColor"
     tools:context="com.keegan.john.justcook.MainActivity">
 
     <Button
@@ -20,75 +20,52 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="12dp"
-        android:background="@drawable/sky"
-        android:onClick="clickFunctionSubmit"
+        android:background="@drawable/rounded_button"
         android:text="Submit"
-        android:textColor="@android:color/white"
+        android:textColor="@color/secondaryTextColor"
         android:textSize="24sp" />
 
     <Button
         android:id="@+id/createButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="21dp"
-        android:background="@drawable/sky"
+        android:background="@drawable/rounded_button"
         android:text="Create Account"
-        android:textColor="@android:color/white"
+        android:textColor="@color/secondaryTextColor"
         android:textSize="24sp" />
 
     <Button
         android:id="@+id/forgotButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_above="@+id/createButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="12dp"
-        android:background="@drawable/sky"
+        android:background="@drawable/rounded_button"
         android:text="Forgot Password"
-        android:textColor="@android:color/white"
+        android:textColor="@color/secondaryTextColor"
         android:textSize="24sp" />
 
     <EditText
-        android:id="@+id/usernameTxt"
+        android:id="@+id/editUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/passwordTxt"
-        android:layout_alignLeft="@+id/passwordTxt"
-        android:layout_alignStart="@+id/passwordTxt"
+        android:layout_alignBottom="@+id/editPassword"
+        android:layout_alignLeft="@+id/editPassword"
+        android:layout_alignStart="@+id/editPassword"
         android:layout_marginBottom="69dp"
         android:ems="10"
         android:hint="Enter Username"
+        android:textColor="@color/primaryTextColor"
         android:inputType="textPersonName" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/usernameTxt"
-        android:layout_alignEnd="@+id/textView3"
-        android:layout_alignRight="@+id/textView3"
-        android:layout_marginBottom="12dp"
-        android:text="Username"
-        android:textColor="@android:color/black"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/passwordTxt"
-        android:layout_alignLeft="@+id/passwordTxt"
-        android:layout_alignStart="@+id/passwordTxt"
-        android:text="Password"
-        android:textColor="@android:color/black"
-        android:textSize="20sp" />
-
     <EditText
-        android:id="@+id/passwordTxt"
+        android:id="@+id/editPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/submitbutton"
