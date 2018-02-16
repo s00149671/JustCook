@@ -8,7 +8,7 @@
     <string name="button">Button</string>
 
 
-    <string-array name="ingredients_items">
+    <string-array name="Vegitables">
         <item>Onion</item>
         <item>Garlic</item>
         <item>Carrot</item>
@@ -19,6 +19,33 @@
         <item>Kale</item>
         <item>Chillie Pepper</item>
     </string-array>
+
+    <string-array name="Meats">
+        <item>Chicken</item>
+        <item>Bacon</item>
+        <item>Sausage</item>
+        <item>Duck</item>
+        <item>Pork</item>
+        <item>Ground Beef</item>
+        <item>Turkey</item>
+        <item>Lamb</item>
+        <item>Pancetta</item>
+    </string-array>
+
+    <string-array name="Fish">
+        <item>Tuna</item>
+        <item>Salmon</item>
+        <item>Haddock</item>
+        <item>Cod</item>
+        <item>Anchovies</item>
+        <item>Catfish</item>
+        <item>Sardines</item>
+        <item>Snapper</item>
+        <item>Sea Bass</item>
+    </string-array>
+
+
+
     <string name="title_activity_settings">Settings</string>
 
     <!-- Strings related to Settings -->
