@@ -2,35 +2,78 @@ package com.keegan.john.justcook;
 
 import android.app.AlertDialog;
 import android.app.FragmentManager;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.Image;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import  android.support.v7.widget.Toolbar;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ImageButton;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.rapidapi.rapidconnect.RapidApiConnect;
 
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
-
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+//
 /**
  * Created by Fidel Rose on 21/11/2017.
  */
+public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClickListener, NavigationView.OnNavigationItemSelectedListener {
 
-public class MainPage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
+    public static final String EXTRA_HEAD = "recipeHead";
+    public static final String EXTRA_IMAGE = "ImageUrl";
+    public static final String EXTRA_Ingred = "ingred";
+    public static EditText txtSearch;
+    private static final String URL_DATA = "http://api.yummly.com/v1/api/recipes?_app_id=a7c56f9f&_app_key=4b001e89379d681015faf52129230ce9&q=burger";
+    //private static final String URL_D = "http://api.yummly.com/v1/api/recipes?_app_id=a7c56f9f&_app_key=4b001e89379d681015faf52129230ce9&q="+txtSearch.getText.toString()+"&allowedIngredient[]="+ itemChecked.getText.toString();
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
+    private List<ListItem> listItems;
+
+   // TextView recipeTitle;
+   // ImageView recipePic;
+    //ListView listView;
+
 
 
     //GRIDVIEW TEST
@@ -57,10 +100,13 @@ public class MainPage extends AppCompatActivity implements NavigationView.OnNavi
     private Toolbar mToolbar;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainpage);
+
+        txtSearch = (EditText) findViewById(R.id.txtSearch);
 
         //Nav Drawer
         NavigationView navigationView =(NavigationView)findViewById(R.id.Navigation_view);
@@ -78,32 +124,22 @@ public class MainPage extends AppCompatActivity implements NavigationView.OnNavi
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
-        //GRIDVIEW TEST
-//        gridView = (GridView) findViewById(R.id.gridView);
-//        GridTrial gridTrial = new GridTrial(MainPage.this,foodPic,txtList);
-//        gridView.setAdapter(gridTrial);
-
-
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        listItems = new ArrayList<>();
+        loadRecyclerViewData();
 
 
-        ImageButton lasagneBtn = (ImageButton) findViewById(R.id.lasagneBtn);
-        ImageButton thaiBtn = (ImageButton) findViewById(R.id.thaiBtn);
 
-        lasagneBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent recipe1 = new Intent(MainPage.this, RecipeInstructions.class);
-                startActivity(recipe1);
-            }
-        });
-        lasagneBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent recipe2 = new Intent(MainPage.this, RecipeInstructions.class);
-                startActivity(recipe2);
-            }
-        });
+
+
+        //recipeTitle = (TextView)findViewById(R.id.recipeTitle);
+        //recipePic = (ImageView)findViewById(R.id.recipePic);
+        //listView = (ListView) findViewById(R.id.listView);
+
+//        DownloadTask task = new DownloadTask();
+//        task.execute("http://api.yummly.com/v1/api/recipes?_app_id=a7c56f9f&_app_key=4b001e89379d681015faf52129230ce9&requirePictures=true");
 
         //Floating Image Button
         floatingButton = (ImageButton) findViewById(R.id.floatBtn);
@@ -136,7 +172,62 @@ public class MainPage extends AppCompatActivity implements NavigationView.OnNavi
 
     }
 
+    private void loadRecyclerViewData(){
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading Data...");
+        progressDialog.show();
 
+        StringRequest stringRequest = new StringRequest(Request.Method.GET,
+                URL_DATA,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+                        try {
+
+                            JSONObject jsonObject = new JSONObject(response);
+                            JSONArray array = jsonObject.getJSONArray("matches");
+                            for (int i = 0; i<array.length(); i++){
+                                JSONObject o = array.getJSONObject(i);
+
+                                //JSONObject imageUrlsBySize = o.getJSONObject("imageUrlsBySize");
+                                //String ninty = imageUrlsBySize.getString("90");
+                                JSONArray smallImageUrls = o.getJSONArray("smallImageUrls");
+                                String smallImageUrlValue = smallImageUrls.get(0).toString();
+
+                                JSONArray ingredients = o.getJSONArray("ingredients");
+                                String ingredientValue = ingredients.get(0).toString();
+                                //JSONArray clivesMadeUpKey = o.optJSONArray("clivesMadeUpKey"); // returns null
+                                //JSONArray clivesMadeUpKey2 = o.getJSONArray("clivesMadeUpKey"); //throws exception
+
+                                ListItem item = new ListItem(
+                                        o.getString("recipeName"),
+                                        smallImageUrlValue,
+                                        ingredientValue
+
+
+                                );
+                                listItems.add(item);
+                            }
+                            adapter = new MyAdapter(listItems, getApplicationContext());
+                            recyclerView.setAdapter(adapter);
+                            ((MyAdapter)adapter).setOnItemClickListener(MainPage.this);
+                            //adapter.setOnItemClickListener(MainPage.this);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        progressDialog.dismiss();
+                        Toast.makeText(getApplicationContext(), volleyError.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
 
 
     @Override
@@ -371,6 +462,17 @@ public class MainPage extends AppCompatActivity implements NavigationView.OnNavi
 
         return true;
 
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        Intent detailIntent = new Intent(this, RecipeInstructions.class);
+        ListItem clickedItem = listItems.get(position);
+
+        detailIntent.putExtra(EXTRA_HEAD, clickedItem.getHead());
+        detailIntent.putExtra(EXTRA_IMAGE, clickedItem.getImageUrl());
+        detailIntent.putExtra(EXTRA_Ingred, clickedItem.getIngred());
+        startActivity(detailIntent);
     }
 
 }

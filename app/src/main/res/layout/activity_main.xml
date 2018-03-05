@@ -9,9 +9,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/primaryLightColor"
+    android:background="@color/primaryTextColor"
     tools:context="com.keegan.john.justcook.MainActivity">
-
     <Button
         android:id="@+id/submitbutton"
         android:layout_width="match_parent"
@@ -61,7 +60,6 @@
         android:layout_marginBottom="69dp"
         android:ems="10"
         android:hint="Enter Username"
-        android:textColor="@color/primaryTextColor"
         android:inputType="textPersonName" />
 
     <EditText

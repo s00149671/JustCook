@@ -22,69 +22,49 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <ScrollView
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <EditText
+            android:id="@+id/txtSearch"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:background="@color/primaryLightColor"/>
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_toRightOf="@+id/txtSearch"
+            android:onClick="getRecipe"
+            android:paddingLeft="10dp"
+            android:text="Search" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_below="@+id/txtSearch"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-            <RelativeLayout
-                android:id="@+id/relativeLayout2"
-                android:layout_width="match_parent"
-                android:layout_height="500dp">
-
-
-                <ImageButton
-                    android:id="@+id/lasagneBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@+id/thaiBtn"
-                    android:scaleType="centerCrop"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/lasagne" />
-
-                <ImageButton
-                    android:id="@+id/thaiBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:scaleType="centerCrop"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/lasagneBtn"
-                    app:srcCompat="@drawable/thai" />
-
-
-                <TextView
-                    android:id="@+id/tvVeg"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:gravity="center" />
-
-                <ImageButton
-                    android:id="@+id/floatBtn"
-                    android:layout_width="65dp"
-                    android:layout_height="65dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginBottom="28dp"
-                    android:layout_marginEnd="27dp"
-                    android:layout_marginRight="27dp"
-                    android:background="@drawable/oval"
-                    android:contentDescription="TODO"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    tools:layout_editor_absoluteY="411dp"></ImageButton>
-
-            </RelativeLayout>
-        </ScrollView>
+            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+        <!--<TextView-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:id="@+id/txtVw"-->
+            <!--android:text="HELLOWORLD"/>-->
+<!--<ListView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:id="@+id/listView"-->
+    <!--/>-->
+        <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/recipePic"/>-->
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/recipePic"-->
+            <!--android:id="@+id/recipeTitle"/>-->
+    </RelativeLayout>
 
 
     </android.support.v7.widget.LinearLayoutCompat>
