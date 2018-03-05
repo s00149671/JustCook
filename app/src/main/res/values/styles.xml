@@ -1,31 +1,19 @@
 <resources>
 
     <!-- Base application theme. -->
-    <!--<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
-
-    <style name="AppTheme" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar">
-
-
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/primaryDarkColor</item>
-        <item name="colorAccent">@color/primaryLightColor</item>
-    </style>
-
-    <style name="AppTheme.NoActionBar" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="colorPrimary">@color/primaryLightColor</item>
-        <item name="colorPrimaryDark">@color/secondaryTextColor</item>
         <item name="colorAccent">@color/secondaryDarkColor</item>
     </style>
+
+
     <!--Drop down option menu doesnt work style doesnt work-->
-    <style name="CustomPopupStyle" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-        <item name="android:colorBackground">@color/primaryTextColor</item>
+    <style name="CustomPopupStyle" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:colorBackground">@color/primaryLightColor</item>
         <item name="overlapAnchor">false</item>
         <item name="android:dropDownVerticalOffset">-4dp</item>
     </style>
-    <style name="AppTheme.AppBarOverlay" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="AppTheme.PopupOverlay" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar" />
 </resources>

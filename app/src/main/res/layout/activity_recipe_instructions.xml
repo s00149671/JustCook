@@ -9,6 +9,8 @@
     android:background="@color/primaryTextColor"
     tools:context="com.keegan.john.justcook.RecipeInstructions">
 
+
+
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
