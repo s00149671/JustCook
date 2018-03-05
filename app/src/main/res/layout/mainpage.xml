@@ -8,101 +8,56 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawerLayout"
-    android:background="@color/primaryLightColor"
+    android:background="@color/primaryTextColor"
     app:popupTheme="@style/CustomPopupStyle" >
 
 
 <android.support.v7.widget.LinearLayoutCompat
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <ScrollView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
 
     <RelativeLayout
-    android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <EditText
+            android:id="@+id/txtSearch"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:background="@color/primaryLightColor"/>
 
-
-        <ImageButton
-            android:id="@+id/lasagneBtn"
-            android:layout_width="180dp"
-            android:layout_height="150dp"
-            android:layout_below="@+id/pastaBtn"
-            android:layout_marginTop="10dp"
-            app:srcCompat="@drawable/lasagne" />
-
-        <ImageButton
-            android:id="@+id/thaiBtn"
-            android:layout_width="180dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="10dp"
-            app:srcCompat="@drawable/thai" />
-        <ImageButton
-            android:id="@+id/pastaBtn"
-            android:layout_width="180dp"
-            android:layout_height="150dp"
-            android:layout_below="@+id/thaiBtn"
-            android:layout_marginTop="10dp"
-            app:srcCompat="@drawable/pasta" />
-        <ImageButton
-            android:id="@+id/saladBtn"
-            android:layout_width="180dp"
-            android:layout_height="150dp"
-            android:layout_toRightOf="@+id/thaiBtn"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp"
-            app:srcCompat="@drawable/salad" />
-        <ImageButton
-            android:id="@+id/soupBtn"
-            android:layout_width="180dp"
-            android:layout_height="150dp"
-            android:layout_toRightOf="@+id/pastaBtn"
-            android:layout_below="@+id/saladBtn"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp"
-            app:srcCompat="@drawable/soup" />
-        <ImageButton
-            android:id="@+id/steak"
-            android:layout_width="180dp"
-            android:layout_height="150dp"
-            android:layout_toRightOf="@+id/pastaBtn"
-            android:layout_below="@+id/soupBtn"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp"
-            app:srcCompat="@drawable/steak" />
         <Button
-            android:id="@+id/btnVeg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/tvVeg"
-            android:layout_marginLeft="19dp"
-            android:layout_marginStart="19dp"
-            android:background="@color/secondaryDarkColor"
-            android:textColor="@color/secondaryTextColor"
-            android:text="@string/vegetables" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
-            android:id="@+id/tvVeg"/>
-
-        <ImageButton
-            android:id="@+id/floatBtn"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/oval" android:contentDescription="TODO">
-        </ImageButton>
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_toRightOf="@+id/txtSearch"
+            android:onClick="getRecipe"
+            android:paddingLeft="10dp"
+            android:text="Search" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_below="@+id/txtSearch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+        <!--<TextView-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:id="@+id/txtVw"-->
+            <!--android:text="HELLOWORLD"/>-->
+<!--<ListView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:id="@+id/listView"-->
+    <!--/>-->
+        <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/recipePic"/>-->
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/recipePic"-->
+            <!--android:id="@+id/recipeTitle"/>-->
     </RelativeLayout>
-</ScrollView>
 
 
 
