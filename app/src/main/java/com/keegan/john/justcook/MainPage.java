@@ -145,14 +145,17 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
 //        task.execute("http://api.yummly.com/v1/api/recipes?_app_id=a7c56f9f&_app_key=4b001e89379d681015faf52129230ce9&requirePictures=true");
 
         //Floating Image Button
-//        floatingButton = (ImageButton) findViewById(R.id.floatBtn);
-//        floatingButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(getApplicationContext(),
-//                        "Float Btn Works",Toast.LENGTH_SHORT).show();
-//            }
-//        });
+       floatingButton = (ImageButton) findViewById(R.id.floatBtn);
+      floatingButton.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+              //Toast.makeText(getApplicationContext(),
+                   //   "Float Btn Works",Toast.LENGTH_SHORT).show();
+
+               Intent myIntent = new Intent(MainPage.this, newRecipePage.class);
+               startActivity(myIntent);
+          }
+        });
 
 
 
