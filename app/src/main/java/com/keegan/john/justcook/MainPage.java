@@ -65,7 +65,7 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
     private static final String URL_DATA = "http://api.yummly.com/v1/api/recipes?_app_id=a7c56f9f&_app_key=4b001e89379d681015faf52129230ce9&q=burger";
     //private static final String URL_D = "http://api.yummly.com/v1/api/recipes?_app_id=a7c56f9f&_app_key=4b001e89379d681015faf52129230ce9&q="+txtSearch.getText.toString()+"&allowedIngredient[]="+ itemChecked.getText.toString();
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter
+    private RecyclerView.Adapter adapter;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
     private List<ListItem> listItems;
@@ -142,14 +142,14 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
 //        task.execute("http://api.yummly.com/v1/api/recipes?_app_id=a7c56f9f&_app_key=4b001e89379d681015faf52129230ce9&requirePictures=true");
 
         //Floating Image Button
-        floatingButton = (ImageButton) findViewById(R.id.floatBtn);
-        floatingButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),
-                        "Float Btn Works",Toast.LENGTH_SHORT).show();
-            }
-        });
+//        floatingButton = (ImageButton) findViewById(R.id.floatBtn);
+//        floatingButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(getApplicationContext(),
+//                        "Float Btn Works",Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
 
 
