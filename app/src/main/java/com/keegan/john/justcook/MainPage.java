@@ -91,7 +91,10 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
     boolean[] checkedIngredients_Meats;
     boolean[] checkedIngredients_Fish;
     boolean[] checkedIngredients_Veg;
-    ArrayList<Integer> mUserItems = new ArrayList<>();
+    ArrayList<Integer> mUserItems_Meats = new ArrayList<>();
+    ArrayList<Integer> mUserItems_Fish = new ArrayList<>();
+    ArrayList<Integer> mUserItems_Veg = new ArrayList<>();
+
 
     //Floating Image Button
     ImageButton floatingButton;
@@ -289,12 +292,12 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
                 @Override
                 public void onClick(DialogInterface dialogInterface, int position, boolean isChecked) {
                     if(isChecked){
-                        if(!mUserItems.contains(position))
+                        if(!mUserItems_Meats.contains(position))
                         {
-                            mUserItems.add(position);
+                            mUserItems_Meats.add(position);
                         }
-                        else if (mUserItems.contains(position)){
-                            mUserItems.remove(position);
+                        else if (mUserItems_Meats.contains(position)){
+                            mUserItems_Meats.remove(position);
                         }
                     }
                 }
@@ -304,11 +307,11 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
                 @Override
                 public void onClick(DialogInterface dialogInterface, int which) {
                     String item = "";
-                    for(int i = 0; i < mUserItems.size(); i++)
+                    for(int i = 0; i < mUserItems_Meats.size(); i++)
                     {
-                        item = item + Meats_Items[mUserItems.get(i)];
+                        item = item + Meats_Items[mUserItems_Meats.get(i)];
                         //check to see if it is the last item. add "," if its not the last item
-                        if(i != mUserItems.size() -1);
+                        if(i != mUserItems_Meats.size() -1);
                         {
                             item = item + ",";
                         }
@@ -329,7 +332,7 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
                     for(int i = 0; i< checkedIngredients_Meats.length; i++)
                     {
                         checkedIngredients_Meats[i] = false;
-                        mUserItems.clear();
+                        mUserItems_Meats.clear();
                         mIngredientsSelected.setText("");
 
                     }
@@ -346,12 +349,12 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
                 @Override
                 public void onClick(DialogInterface dialogInterface, int position, boolean isChecked) {
                     if(isChecked){
-                        if(!mUserItems.contains(position))
+                        if(!mUserItems_Fish.contains(position))
                         {
-                            mUserItems.add(position);
+                            mUserItems_Fish.add(position);
                         }
-                        else if (mUserItems.contains(position)){
-                            mUserItems.remove(position);
+                        else if (mUserItems_Fish.contains(position)){
+                            mUserItems_Fish.remove(position);
                         }
                     }
                 }
@@ -361,11 +364,11 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
                 @Override
                 public void onClick(DialogInterface dialogInterface, int which) {
                     String item = "";
-                    for(int i = 0; i < mUserItems.size(); i++)
+                    for(int i = 0; i < mUserItems_Fish.size(); i++)
                     {
-                        item = item + Fish_Items[mUserItems.get(i)];
+                        item = item + Fish_Items[mUserItems_Fish.get(i)];
                         //check to see if it is the last item. add "," if its not the last item
-                        if(i != mUserItems.size() -1);
+                        if(i != mUserItems_Fish.size() -1);
                         {
                             item = item + ",";
                         }
@@ -386,7 +389,7 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
                     for(int i = 0; i< checkedIngredients_Fish.length; i++)
                     {
                         checkedIngredients_Fish[i] = false;
-                        mUserItems.clear();
+                        mUserItems_Fish.clear();
                         mIngredientsSelected.setText("");
 
                     }
@@ -404,12 +407,12 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
                 @Override
                 public void onClick(DialogInterface dialogInterface, int position, boolean isChecked) {
                     if(isChecked){
-                        if(!mUserItems.contains(position))
+                        if(!mUserItems_Veg.contains(position))
                         {
-                            mUserItems.add(position);
+                            mUserItems_Veg.add(position);
                         }
-                        else if (mUserItems.contains(position)){
-                            mUserItems.remove(position);
+                        else if (mUserItems_Veg.contains(position)){
+                            mUserItems_Veg.remove(position);
                         }
                     }
                 }
@@ -419,11 +422,11 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
                 @Override
                 public void onClick(DialogInterface dialogInterface, int which) {
                     String item = "";
-                    for(int i = 0; i < mUserItems.size(); i++)
+                    for(int i = 0; i < mUserItems_Veg.size(); i++)
                     {
-                        item = item + Vegetables_Items[mUserItems.get(i)];
+                        item = item + Vegetables_Items[mUserItems_Veg.get(i)];
                         //check to see if it is the last item. add "," if its not the last item
-                        if(i != mUserItems.size() -1);
+                        if(i != mUserItems_Veg.size() -1);
                         {
                             item = item + ",";
                         }
@@ -444,7 +447,7 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
                     for(int i = 0; i< checkedIngredients_Veg.length; i++)
                     {
                         checkedIngredients_Veg[i] = false;
-                        mUserItems.clear();
+                        mUserItems_Veg.clear();
                         mIngredientsSelected.setText("");
 
                     }

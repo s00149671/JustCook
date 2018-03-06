@@ -63,7 +63,6 @@ protected void onCreate(Bundle savedInstanceState) {
                 startActivity(create);
             }
         });
-
 //        submitButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
