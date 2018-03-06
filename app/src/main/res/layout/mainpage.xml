@@ -52,6 +52,17 @@
             android:layout_below="@+id/txtSearch"
             android:layout_width="match_parent"
             android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+
+        <ImageButton
+            android:id="@+id/floatBtn"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/plus"
+            android:contentDescription="TODO"></ImageButton>
+
         <!--<TextView-->
             <!--android:layout_height="match_parent"-->
             <!--android:layout_width="match_parent"-->
@@ -81,8 +92,13 @@
         android:layout_height="match_parent"
         app:menu="@menu/navigation_menu"
         android:id="@+id/Navigation_view"
-        android:layout_gravity="start">
-        <!--app:headerLayout="@layout/navigation_header">-->
+        android:layout_gravity="start"
+        app:headerLayout="@layout/navigation_header">
+
+
+
+
+        
 
 
 
