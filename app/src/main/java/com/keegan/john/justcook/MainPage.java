@@ -3,6 +3,7 @@ package com.keegan.john.justcook;
 import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.app.ProgressDialog;
+import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
@@ -239,24 +240,32 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        int id = item.getItemId();
+        if(id == R.id.nav_Profile)
+        {
+            Intent intentProfile = new Intent(MainPage.this,Profile.class);
+            startActivity(intentProfile);
+            return  true;
+        }
+        if(id == R.id.nav_Settings)
+        {
+            Intent intentProfile = new Intent(MainPage.this,SettingsActivity.class);
+            startActivity(intentProfile);
+            return  true;
+        }
+        if(id == R.id.nav_Logout)
+        {
+            Intent intentProfile = new Intent(MainPage.this,MainActivity.class);
+            startActivity(intentProfile);
+            return  true;
+        }
+
+
         if (mToggle.onOptionsItemSelected(item))
         {
             return true;
         }
 
-        //Options Selected Nagigation
-//        switch (item.getItemId())
-//        {
-//
-//            case R.id.nav_Vegetables:
-//                //Veg List
-//                Toast.makeText(getApplicationContext(), "Vegetables",Toast.LENGTH_SHORT).show();
-//                break;
-//
-//
-//            default:
-//                //unkown error
-//        }
 
 
         return super.onOptionsItemSelected(item);
@@ -264,12 +273,13 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
     }
 
     //options Menu
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
 
-        getMenuInflater().inflate(R.menu.navigation_menu,menu);
+        getMenuInflater().inflate(R.menu.optionmenu,menu);
+
+
 
 
         return super.onCreateOptionsMenu(menu);
@@ -287,7 +297,8 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
     public  boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.nav_Meat) {
+
+            if (id == R.id.nav_Meat) {
 
             AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainPage.this);
             mBuilder.setTitle("Meats");

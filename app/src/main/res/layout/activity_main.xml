@@ -11,6 +11,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/primaryTextColor"
     tools:context="com.keegan.john.justcook.MainActivity">
+
     <Button
         android:id="@+id/submitbutton"
         android:layout_width="match_parent"
@@ -21,7 +22,7 @@
         android:layout_marginBottom="12dp"
         android:background="@drawable/rounded_button"
         android:text="Submit"
-        android:textColor="@color/secondaryTextColor"
+        android:textColor="@android:color/white"
         android:textSize="24sp" />
 
     <Button
@@ -34,7 +35,7 @@
         android:layout_marginBottom="21dp"
         android:background="@drawable/rounded_button"
         android:text="Create Account"
-        android:textColor="@color/secondaryTextColor"
+        android:textColor="@android:color/white"
         android:textSize="24sp" />
 
     <Button
@@ -47,7 +48,7 @@
         android:layout_marginBottom="12dp"
         android:background="@drawable/rounded_button"
         android:text="Forgot Password"
-        android:textColor="@color/secondaryTextColor"
+        android:textColor="@android:color/white"
         android:textSize="24sp" />
 
     <EditText
@@ -77,8 +78,9 @@
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        android:layout_above="@+id/editUsername"
-        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@+id/editUsername"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="25dp"
         app:srcCompat="@drawable/justcookicon" />
 
 </RelativeLayout>

@@ -33,7 +33,7 @@ public class RecipeInstructions extends AppCompatActivity {
         buttonOnClick();
 
         //back button
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         Intent intent = getIntent();

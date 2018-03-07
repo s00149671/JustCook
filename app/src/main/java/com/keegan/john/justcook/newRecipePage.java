@@ -64,7 +64,8 @@ public class newRecipePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipepage_new);
         addListenerOnButton();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         imageButton = (Button) findViewById(R.id.imageButton);
         imageButton.setOnClickListener(new View.OnClickListener() {

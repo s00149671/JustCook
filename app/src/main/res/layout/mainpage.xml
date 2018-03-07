@@ -46,7 +46,11 @@
             android:layout_toRightOf="@+id/txtSearch"
             android:onClick="getRecipe"
             android:paddingLeft="10dp"
-            android:text="Search" />
+            android:text="Search"
+            android:background="@drawable/rounded_button"
+
+            />
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_below="@+id/txtSearch"
