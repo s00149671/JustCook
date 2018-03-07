@@ -63,8 +63,8 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
     public static final String EXTRA_IMAGE = "ImageUrl";
     public static final String EXTRA_Ingred = "ingred";
     public static EditText txtSearch;
-    private static final String URL_DATA = "http://api.yummly.com/v1/api/recipes?_app_id=a7c56f9f&_app_key=4b001e89379d681015faf52129230ce9&q=burger";
-    //private static final String URL_D = "http://api.yummly.com/v1/api/recipes?_app_id=a7c56f9f&_app_key=4b001e89379d681015faf52129230ce9&q="+txtSearch.getText.toString()+"&allowedIngredient[]="+ itemChecked.getText.toString();
+    //private static final String URL_DATA = "http://api.yummly.com/v1/api/recipes?_app_id=a7c56f9f&_app_key=4b001e89379d681015faf52129230ce9&q=Fish";
+    private static final String URL_DATA = "http://api.yummly.com/v1/api/recipes?_app_id=a7c56f9f&_app_key=4b001e89379d681015faf52129230ce9&q={0}";
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private DrawerLayout mDrawerLayout;
@@ -104,11 +104,13 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
     private Toolbar mToolbar;
 
 
+    Button SearchButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainpage);
+
 
         txtSearch = (EditText) findViewById(R.id.txtSearch);
 
@@ -158,6 +160,23 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
           }
         });
 
+
+            SearchButton = (Button) findViewById(R.id.Search);
+            SearchButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //Toast.makeText(getApplicationContext(),
+                    //   "Float Btn Works",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),
+                            "Search", Toast.LENGTH_SHORT).show();
+
+                     final String Url = String.format(URL_DATA, txtSearch.getText().toString());
+
+                    loadRecyclerViewData();
+
+
+                }
+            });
 
 
 

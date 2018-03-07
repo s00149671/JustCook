@@ -23,70 +23,82 @@
             android:layout_height="wrap_content" />
 
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <EditText
-            android:id="@+id/txtSearch"
-            android:layout_width="200dp"
-            android:layout_height="40dp"
-            android:background="@color/primaryLightColor"/>
-
-        <TextView
-                   android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                   android:layout_alignParentTop="true"
-                   android:layout_centerHorizontal="true"
-                    android:gravity="center"
-                    android:id="@+id/tvVeg"/>
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_toRightOf="@+id/txtSearch"
-            android:onClick="getRecipe"
-            android:paddingLeft="10dp"
-            android:text="Search"
-            android:background="@drawable/rounded_button"
-
-            />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_below="@+id/txtSearch"
+        <RelativeLayout
+            android:id="@+id/relativeLayout2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+            android:layout_height="match_parent">
 
-        <ImageButton
-            android:id="@+id/floatBtn"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/plus"
-            android:contentDescription="TODO"></ImageButton>
+            <EditText
+                android:id="@+id/txtSearch"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="@color/primaryLightColor"
+                android:paddingLeft="10dp"
+                android:text="Fish"
+                android:textAlignment="textStart"
+                android:textSize="24sp" />
 
-        <!--<TextView-->
+            <TextView
+                android:id="@+id/tvVeg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/txtSearch"
+                android:layout_alignBottom="@+id/txtSearch"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="10dp"
+                android:gravity="left"
+                android:textSize="24sp"
+                android:visibility="invisible" />
+
+            <Button
+                android:id="@+id/Search"
+                android:layout_width="140dp"
+                android:layout_height="30dp"
+                android:layout_alignTop="@+id/tvVeg"
+                android:layout_toEndOf="@+id/txtSearch"
+                android:background="@drawable/rounded_button"
+                android:onClick="getRecipe"
+                android:paddingLeft="10dp"
+                android:text="Search" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/txtSearch"></android.support.v7.widget.RecyclerView>
+
+            <ImageButton
+                android:id="@+id/floatBtn"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/plus"
+                android:contentDescription="TODO"></ImageButton>
+
+            <!--<TextView-->
             <!--android:layout_height="match_parent"-->
             <!--android:layout_width="match_parent"-->
             <!--android:id="@+id/txtVw"-->
             <!--android:text="HELLOWORLD"/>-->
-<!--<ListView-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:id="@+id/listView"-->
-    <!--/>-->
-        <!--<ImageView-->
+            <!--<ListView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:id="@+id/listView"-->
+            <!--/>-->
+            <!--<ImageView-->
             <!--android:layout_width="wrap_content"-->
             <!--android:layout_height="wrap_content"-->
             <!--android:id="@+id/recipePic"/>-->
-        <!--<TextView-->
+            <!--<TextView-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="wrap_content"-->
             <!--android:layout_below="@+id/recipePic"-->
             <!--android:id="@+id/recipeTitle"/>-->
-    </RelativeLayout>
+        </RelativeLayout>
 
 
     </android.support.v7.widget.LinearLayoutCompat>
