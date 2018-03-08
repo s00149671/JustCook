@@ -141,7 +141,7 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         listItems = new ArrayList<>();
 
-        final String url = String.format(URL_DATA, "Burger");
+        final String url = String.format(URL_DATA, "");
         loadRecyclerViewData(url);
 
 
@@ -214,6 +214,7 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
     }
 
     private void loadRecyclerViewData(String loadUrl){
+        listItems.clear();
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading Data...");
         progressDialog.show();
@@ -255,7 +256,7 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
 
                                     listItems.add(item);
                                 }
-                            
+
                             //
                             adapter = new MyAdapter(listItems, getApplicationContext());
                             recyclerView.setAdapter(adapter);
