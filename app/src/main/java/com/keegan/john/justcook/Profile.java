@@ -21,22 +21,14 @@ import com.parse.SaveCallback;
 
 public class Profile extends AppCompatActivity {
 
-    String UserName;
-    FirebaseDatabase database;
-    DatabaseReference users;
-    TextView editUsername, editPassword;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_page);
 
-        database = FirebaseDatabase.getInstance();
-        users = database.getReference("Users");
-
-        editUsername = (TextView) findViewById(R.id.UsersName);
-
-
+        //recipe_name = (TextView) findViewById(R.id.UsersName);
+        //recipe_name = (TextView) findViewById(R.id.UsersEmail);
 
     }
 }

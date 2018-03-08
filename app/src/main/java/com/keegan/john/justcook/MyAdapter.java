@@ -82,8 +82,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             super(itemView);
             recipe_name = (TextView) itemView.findViewById(R.id.recipe_name);
             imageView = (ImageView) itemView.findViewById(R.id.imageView);
-              ingred = (TextView) itemView.findViewById(R.id.txtIngredients);
-//            linearLayout = (LinearLayout) itemView.findViewById(R.id.linearLayout);
+            ingred = (TextView) itemView.findViewById(R.id.txtIngredients);
+            //linearLayout = (LinearLayout) itemView.findViewById(R.id.linearLayout);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

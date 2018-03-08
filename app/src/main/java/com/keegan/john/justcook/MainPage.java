@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.ClipData;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
@@ -64,8 +65,13 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
     public static final String EXTRA_Ingred = "ingred";
     public static EditText txtSearch;
     //private static final String URL_DATA = "http://api.yummly.com/v1/api/recipes?_app_id=a7c56f9f&_app_key=4b001e89379d681015faf52129230ce9&q=Fish";
-    private static final String URL_DATA = "http://api.yummly.com/v1/api/recipes?_app_id=a7c56f9f&_app_key=4b001e89379d681015faf52129230ce9&q={0}";
+    public static final String URL_DATA = "http://api.yummly.com/v1/api/recipes?_app_id=a7c56f9f&_app_key=4b001e89379d681015faf52129230ce9&q=%s";
+    //private static final String URL_DATA = "http://api.yummly.com/v1/api/recipes?_app_id=a7c56f9f&_app_key=4b001e89379d681015faf52129230ce9&q=burger";
+    //private static final String URL_D = "http://api.yummly.com/v1/api/recipes?_app_id=a7c56f9f&_app_key=4b001e89379d681015faf52129230ce9&q="+txtSearch.getText.toString()+"&allowedIngredient[]="+ itemChecked.getText.toString();
+    //private static final String URL_D = "http://api.yummly.com/v1/api/recipes?_app_id=a7c56f9f&_app_key=4b001e89379d681015faf52129230ce9&q={0}&allowedIngredient[]={1}";
+   // private String putInOnClickImYourRealURLWithPlaceholdersFilledIn = String.format(URL_D, txtSearch.getText().toString(), otherThing);
     private RecyclerView recyclerView;
+//  final String Url = String.format(URL_DATA, txtSearch.getText().toString());
     private RecyclerView.Adapter adapter;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
@@ -134,7 +140,10 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         listItems = new ArrayList<>();
-        loadRecyclerViewData();
+
+        final String url = String.format(URL_DATA, "Burger");
+        loadRecyclerViewData(url);
+
 
 
 
@@ -167,12 +176,18 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
                 public void onClick(View view) {
                     //Toast.makeText(getApplicationContext(),
                     //   "Float Btn Works",Toast.LENGTH_SHORT).show();
-                    Toast.makeText(getApplicationContext(),
-                            "Search", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(),
+//                            "Search", Toast.LENGTH_SHORT).show();
+
 
                      final String Url = String.format(URL_DATA, txtSearch.getText().toString());
+                     loadRecyclerViewData(Url);
 
-                    loadRecyclerViewData();
+
+
+
+
+
 
 
                 }
@@ -198,13 +213,13 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
 
     }
 
-    private void loadRecyclerViewData(){
+    private void loadRecyclerViewData(String loadUrl){
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading Data...");
         progressDialog.show();
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
-                URL_DATA,
+                loadUrl,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -213,34 +228,48 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
 
                             JSONObject jsonObject = new JSONObject(response);
                             JSONArray array = jsonObject.getJSONArray("matches");
-                            for (int i = 0; i<array.length(); i++){
+                            for (int i = 0; i<array.length(); i++) {
                                 JSONObject o = array.getJSONObject(i);
 
                                 //JSONObject imageUrlsBySize = o.getJSONObject("imageUrlsBySize");
                                 //String ninty = imageUrlsBySize.getString("90");
                                 JSONArray smallImageUrls = o.getJSONArray("smallImageUrls");
+
                                 String smallImageUrlValue = smallImageUrls.get(0).toString();
-
+//
                                 JSONArray ingredients = o.getJSONArray("ingredients");
-                                String ingredientValue = ingredients.get(0).toString();
-                                //JSONArray clivesMadeUpKey = o.optJSONArray("clivesMadeUpKey"); // returns null
-                                //JSONArray clivesMadeUpKey2 = o.getJSONArray("clivesMadeUpKey"); //throws exception
+//                                for (int j = 0; j < ingredients.length(); j++) {
+                                    String ingredientValue = ingredients.get(0).toString();
+//                                    String smallImageUrlValue = smallImageUrls.get(0).toString();
+                                    ListItem item = new ListItem(
+                                            o.getString("recipeName"),
+                                            smallImageUrlValue,
+                                            ingredientValue
+                                    );
+//                                    ListItem item = new ListItem(
+//                                            o.getString("recipeName"),
+//                                            smallImageUrlValue,
+//                                            ingredientValue
+//                                    );
 
-                                ListItem item = new ListItem(
-                                        o.getString("recipeName"),
-                                        smallImageUrlValue,
-                                        ingredientValue
 
-
-                                );
-                                listItems.add(item);
-                            }
+                                    listItems.add(item);
+                                }
+                            
+                            //
                             adapter = new MyAdapter(listItems, getApplicationContext());
                             recyclerView.setAdapter(adapter);
                             ((MyAdapter)adapter).setOnItemClickListener(MainPage.this);
                             //adapter.setOnItemClickListener(MainPage.this);
                         } catch (JSONException e) {
                             e.printStackTrace();
+
+//                            AlertDialog.Builder alert = new AlertDialog.Builder(MainPage.this);
+//                            alert.setTitle("Error");
+//                            alert.setMessage(e.getMessage());
+//                            alert.setPositiveButton("OK", null);
+//                            alert.show();
+
                         }
                     }
                 },
@@ -254,6 +283,7 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
+
 
 
     @Override
