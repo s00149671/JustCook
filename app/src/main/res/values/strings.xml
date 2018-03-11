@@ -9,39 +9,39 @@
 
 
     <string-array name="Vegitables">
-        <item>Onion</item>
-        <item>Garlic</item>
-        <item>Carrot</item>
-        <item>Tomato</item>
-        <item>Bell Pepper</item>
-        <item>Mushroom</item>
-        <item>Broccoli</item>
-        <item>Kale</item>
-        <item>Chillie Pepper</item>
+        <item>onion</item>
+        <item>garlic</item>
+        <item>carrot</item>
+        <item>tomato</item>
+        <item>bell Pepper</item>
+        <item>mushroom</item>
+        <item>broccoli</item>
+        <item>kale</item>
+        <item>chillie Pepper</item>
     </string-array>
 
     <string-array name="Meats">
-        <item>Chicken</item>
-        <item>Bacon</item>
-        <item>Sausage</item>
-        <item>Duck</item>
-        <item>Pork</item>
-        <item>Ground Beef</item>
-        <item>Turkey</item>
-        <item>Lamb</item>
-        <item>Pancetta</item>
+        <item>chicken</item>
+        <item>bacon</item>
+        <item>sausage</item>
+        <item>duck</item>
+        <item>pork</item>
+        <item>ground Beef</item>
+        <item>turkey</item>
+        <item>lamb</item>
+        <item>pancetta</item>
     </string-array>
 
     <string-array name="Fish">
-        <item>Tuna</item>
-        <item>Salmon</item>
-        <item>Haddock</item>
-        <item>Cod</item>
-        <item>Anchovies</item>
-        <item>Catfish</item>
-        <item>Sardines</item>
-        <item>Snapper</item>
-        <item>Sea Bass</item>
+        <item>tuna</item>
+        <item>salmon</item>
+        <item>haddock</item>
+        <item>cod</item>
+        <item>anchovies</item>
+        <item>catfish</item>
+        <item>sardines</item>
+        <item>snapper</item>
+        <item>sea Bass</item>
     </string-array>
 
 
