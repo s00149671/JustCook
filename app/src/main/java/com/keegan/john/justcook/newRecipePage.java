@@ -45,6 +45,8 @@ import android.widget.ImageView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 /**
@@ -130,6 +132,8 @@ public class newRecipePage extends AppCompatActivity {
         selectIngredients =(Button) findViewById(R.id.ingredientsbutton);
         //image
         ivImage = (ImageView)findViewById(R.id.ivImage);
+        //ingredients text view
+        mIngredientsSelected = (TextView) findViewById(R.id.ingredientsListView);
 
         selectIngredients.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,10 +155,12 @@ public class newRecipePage extends AppCompatActivity {
                             mBuilder.setMultiChoiceItems(Meats_Items, checkedIngredients_Meats, new DialogInterface.OnMultiChoiceClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int position, boolean isChecked) {
-                                    if (isChecked) {
-                                        if (!mUserItems_Meats.contains(position)) {
+                                    if(isChecked){
+                                        if(!mUserItems_Meats.contains(position))
+                                        {
                                             mUserItems_Meats.add(position);
-                                        } else if (mUserItems_Meats.contains(position)) {
+                                        }
+                                        else if (mUserItems_Meats.contains(position)){
                                             mUserItems_Meats.remove(position);
                                         }
                                     }
@@ -165,13 +171,15 @@ public class newRecipePage extends AppCompatActivity {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int which) {
                                     String item = "";
-                                    for (int i = 0; i < mUserItems_Meats.size(); i++) {
+                                    for(int i = 0; i < mUserItems_Meats.size(); i++)
+                                    {
                                         item = item + Meats_Items[mUserItems_Meats.get(i)];
                                         //check to see if it is the last item. add "," if its not the last item
-                                        if (i != mUserItems_Meats.size() - 1) ;
+                                        if(i != mUserItems_Meats.size() -1 );
                                         {
-                                            item = item + ",";
+                                            item = item + ", ";
                                         }
+
                                     }
                                     mIngredientsSelected.setText(item);
                                     Ingredients_All.add(item);
@@ -187,7 +195,8 @@ public class newRecipePage extends AppCompatActivity {
                             mBuilder.setNeutralButton("Clear all", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int which) {
-                                    for (int i = 0; i < checkedIngredients_Meats.length; i++) {
+                                    for(int i = 0; i< checkedIngredients_Meats.length; i++)
+                                    {
                                         checkedIngredients_Meats[i] = false;
                                         mUserItems_Meats.clear();
                                         mIngredientsSelected.setText("");
@@ -195,13 +204,13 @@ public class newRecipePage extends AppCompatActivity {
                                     }
                                 }
                             });
-
                             AlertDialog mDialog = mBuilder.create();
                             mDialog.show();
 
 
+
                         } else if (items[i].equals("Fish")) {
-                            AlertDialog.Builder mBuilder = new AlertDialog.Builder(newRecipePage.this);
+                            android.app.AlertDialog.Builder mBuilder = new android.app.AlertDialog.Builder(newRecipePage.this);
                             mBuilder.setTitle("Fish");
                             mBuilder.setMultiChoiceItems(Fish_Items, checkedIngredients_Fish, new DialogInterface.OnMultiChoiceClickListener() {
                                 @Override
@@ -229,12 +238,10 @@ public class newRecipePage extends AppCompatActivity {
                                         if(i != mUserItems_Fish.size() -1);
                                         {
                                             item = item + ",";
-
                                         }
                                     }
                                     mIngredientsSelected.setText(item);
                                     Ingredients_All.add(item);
-
                                 }
                             });
                             mBuilder.setNegativeButton("Dismiss", new DialogInterface.OnClickListener() {
@@ -252,16 +259,15 @@ public class newRecipePage extends AppCompatActivity {
                                         checkedIngredients_Fish[i] = false;
                                         mUserItems_Fish.clear();
                                         mIngredientsSelected.setText("");
-
                                     }
                                 }
                             });
-
-                            AlertDialog mDialog = mBuilder.create();
+                            android.app.AlertDialog mDialog = mBuilder.create();
                             mDialog.show();
 
+
                         } else if (items[i].equals("Vegetables")) {
-                            AlertDialog.Builder mBuilder = new AlertDialog.Builder(newRecipePage.this);
+                           android.app.AlertDialog.Builder mBuilder = new android.app.AlertDialog.Builder(newRecipePage.this);
                             mBuilder.setTitle("Vegetables");
                             mBuilder.setMultiChoiceItems(Vegetables_Items, checkedIngredients_Veg, new DialogInterface.OnMultiChoiceClickListener() {
                                 @Override
@@ -290,9 +296,11 @@ public class newRecipePage extends AppCompatActivity {
                                         {
                                             item = item + ",";
                                         }
+
                                     }
                                     mIngredientsSelected.setText(item);
                                     Ingredients_All.add(item);
+
 
                                 }
                             });
@@ -311,12 +319,10 @@ public class newRecipePage extends AppCompatActivity {
                                         checkedIngredients_Veg[i] = false;
                                         mUserItems_Veg.clear();
                                         mIngredientsSelected.setText("");
-
                                     }
                                 }
                             });
-
-                            AlertDialog mDialog = mBuilder.create();
+                            android.app.AlertDialog mDialog = mBuilder.create();
                             mDialog.show();
 
 
@@ -471,9 +477,9 @@ public class newRecipePage extends AppCompatActivity {
         Boolean dairyFree = checkboxDairyFree.isChecked();
         ArrayList<String> ingredients_List =  Ingredients_All;
 
-      //  SaveNewRecipeData savedata = new SaveNewRecipeData(Name, Description,
-              //  ingredients_List,  Vegetarian,
-            //    Vegan, Celiac, Pescetarian,nutFree, dairyFree);
+     //  SaveNewRecipeData savedata = new SaveNewRecipeData(Name, Description,
+          //     ingredients_List,  Vegetarian,
+            //   Vegan, Celiac, Pescetarian,nutFree, dairyFree);
 
 
 
