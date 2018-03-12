@@ -1,8 +1,11 @@
 package com.keegan.john.justcook;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.app.ProgressDialog;
+import android.content.ClipData;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
@@ -15,10 +18,12 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -57,33 +62,17 @@ import java.util.Map;
  * Created by Fidel Rose on 21/11/2017.
  */
 public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClickListener, NavigationView.OnNavigationItemSelectedListener {
-
     public static final String EXTRA_HEAD = "recipeHead";
     public static final String EXTRA_IMAGE = "ImageUrl";
     public static final String EXTRA_Ingred = "ingred";
     public static EditText txtSearch;
-    private static final String URL_DATA = "http://api.yummly.com/v1/api/recipes?_app_id=a7c56f9f&_app_key=4b001e89379d681015faf52129230ce9&q=burger";
-    //private static final String URL_D = "http://api.yummly.com/v1/api/recipes?_app_id=a7c56f9f&_app_key=4b001e89379d681015faf52129230ce9&q="+txtSearch.getText.toString()+"&allowedIngredient[]="+ itemChecked.getText.toString();
+    public static final String URL_DATA = "http://api.yummly.com/v1/api/recipes?_app_id=a7c56f9f&_app_key=4b001e89379d681015faf52129230ce9&q=%s";
+    public static final String URL_Ingrediance = "http://api.yummly.com/v1/api/recipes?_app_id=a7c56f9f&_app_key=4b001e89379d681015faf52129230ce9%s";
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
     private List<ListItem> listItems;
-
-   // TextView recipeTitle;
-   // ImageView recipePic;
-    //ListView listView;
-
-
-
-    //GRIDVIEW TEST
-//    GridView gridView;
-//
-//    String txtList[] = {"Lasagne","Thai Red Curry"};
-//
-//    int foodPic[] = {R.drawable.lasagne, R.drawable.thai};
-    //multiple choice list dialog
-
     TextView mIngredientsSelected;
     String[] Vegetables_Items;
     String[] Meats_Items;
@@ -94,97 +83,85 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
     ArrayList<Integer> mUserItems_Meats = new ArrayList<>();
     ArrayList<Integer> mUserItems_Fish = new ArrayList<>();
     ArrayList<Integer> mUserItems_Veg = new ArrayList<>();
-
-
-    //Floating Image Button
     ImageButton floatingButton;
-
-    //navigation over action bar
     private Toolbar mToolbar;
-
-
-
+    Button IngredianceSearch;
+    Button SearchButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainpage);
-
         txtSearch = (EditText) findViewById(R.id.txtSearch);
-
         //Nav Drawer
         NavigationView navigationView =(NavigationView)findViewById(R.id.Navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
-
         //Nav Bar Over Action Bar
         mToolbar =(Toolbar) findViewById(R.id.nav_action);
         setSupportActionBar(mToolbar);
-
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout,R.string.open,R.string.close);
-
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        //RecyclerView
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         listItems = new ArrayList<>();
-        loadRecyclerViewData();
+        final String url = String.format(URL_DATA, "");
+        loadRecyclerViewData(url);
 
-
-
-
-
-        //recipeTitle = (TextView)findViewById(R.id.recipeTitle);
-        //recipePic = (ImageView)findViewById(R.id.recipePic);
-        //listView = (ListView) findViewById(R.id.listView);
-
-//        DownloadTask task = new DownloadTask();
-//        task.execute("http://api.yummly.com/v1/api/recipes?_app_id=a7c56f9f&_app_key=4b001e89379d681015faf52129230ce9&requirePictures=true");
-
-        //Floating Image Button
        floatingButton = (ImageButton) findViewById(R.id.floatBtn);
       floatingButton.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-              //Toast.makeText(getApplicationContext(),
-                   //   "Float Btn Works",Toast.LENGTH_SHORT).show();
-
                Intent myIntent = new Intent(MainPage.this, newRecipePage.class);
                startActivity(myIntent);
           }
         });
-
-
-
-
+        IngredianceSearch = (Button) findViewById(R.id.IngredianceSearch);
+        IngredianceSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String MeatFormat = TextUtils.join("&allowedIngredient[]=",mUserItems_Meats);
+               String VegFormat = TextUtils.join("&allowedIngredient[]=",mUserItems_Veg);
+                String FishFormat = TextUtils.join("&allowedIngredient[]=",mUserItems_Fish);
+               // String formatTest = String.format("%s",VegFormat);
+                String AllFormats = String.format("%s%s%s",MeatFormat,VegFormat,FishFormat);
+                final String UrlFormat = String.format(URL_DATA, AllFormats);
+                loadRecyclerViewData(UrlFormat);
+            }
+        });
+            SearchButton = (Button) findViewById(R.id.Search);
+            SearchButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                     final String Url = String.format(URL_DATA, txtSearch.getText().toString());
+                     loadRecyclerViewData(Url);
+                }
+            });
         //Ingrediance choicen is being displayed
         mIngredientsSelected = (TextView) findViewById(R.id.tvVeg);
-
         //passing the check box values for vegitables
         Vegetables_Items = getResources().getStringArray(R.array.Vegitables);
         checkedIngredients_Veg = new boolean[Vegetables_Items.length];
-
         //passing the check box values for Meats
         Meats_Items = getResources().getStringArray(R.array.Meats);
         checkedIngredients_Meats = new boolean[Meats_Items.length];
-
         //passing the check box values for Fish
         Fish_Items = getResources().getStringArray(R.array.Fish);
         checkedIngredients_Fish = new boolean[Fish_Items.length];
-
-
     }
 
-    private void loadRecyclerViewData(){
+    //LOAD API
+    private void loadRecyclerViewData(String loadUrl){
+        listItems.clear();
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading Data...");
         progressDialog.show();
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
-                URL_DATA,
+                loadUrl,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -193,34 +170,33 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
 
                             JSONObject jsonObject = new JSONObject(response);
                             JSONArray array = jsonObject.getJSONArray("matches");
-                            for (int i = 0; i<array.length(); i++){
+                            for (int i = 0; i<array.length(); i++) {
                                 JSONObject o = array.getJSONObject(i);
-
-                                //JSONObject imageUrlsBySize = o.getJSONObject("imageUrlsBySize");
-                                //String ninty = imageUrlsBySize.getString("90");
                                 JSONArray smallImageUrls = o.getJSONArray("smallImageUrls");
                                 String smallImageUrlValue = smallImageUrls.get(0).toString();
-
                                 JSONArray ingredients = o.getJSONArray("ingredients");
-                                String ingredientValue = ingredients.get(0).toString();
-                                //JSONArray clivesMadeUpKey = o.optJSONArray("clivesMadeUpKey"); // returns null
-                                //JSONArray clivesMadeUpKey2 = o.getJSONArray("clivesMadeUpKey"); //throws exception
+                              // for (int j = 0; j < ingredients.length(); j++) {
+                                   String ingredientValue = ingredients.get(0).toString();
+//                                    String smallImageUrlValue = smallImageUrls.get(0).toString();
+                                   ListItem item = new ListItem(
+                                           o.getString("recipeName"),
+                                           smallImageUrlValue,
+                                           ingredientValue
 
-                                ListItem item = new ListItem(
-                                        o.getString("recipeName"),
-                                        smallImageUrlValue,
-                                        ingredientValue
-
-
-                                );
-                                listItems.add(item);
-                            }
+                                   );
+                                   listItems.add(item);
+                               }
+                            //
                             adapter = new MyAdapter(listItems, getApplicationContext());
                             recyclerView.setAdapter(adapter);
                             ((MyAdapter)adapter).setOnItemClickListener(MainPage.this);
-                            //adapter.setOnItemClickListener(MainPage.this);
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            AlertDialog.Builder alert = new AlertDialog.Builder(MainPage.this);
+                            alert.setTitle("Error");
+                            alert.setMessage(e.getMessage());
+                            alert.setPositiveButton("OK", null);
+                            alert.show();
                         }
                     }
                 },
@@ -234,61 +210,48 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
-
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        int id = item.getItemId();
+        if(id == R.id.nav_Profile)
+        {
+            Intent intentProfile = new Intent(MainPage.this,Profile.class);
+            startActivity(intentProfile);
+            return  true;
+        }
+        if(id == R.id.nav_Settings)
+        {
+            Intent intentProfile = new Intent(MainPage.this,SettingsActivity.class);
+            startActivity(intentProfile);
+            return  true;
+        }
+        if(id == R.id.nav_Logout)
+        {
+            Intent intentProfile = new Intent(MainPage.this,MainActivity.class);
+            startActivity(intentProfile);
+            return  true;
+        }
         if (mToggle.onOptionsItemSelected(item))
         {
             return true;
         }
-
-        //Options Selected Nagigation
-//        switch (item.getItemId())
-//        {
-//
-//            case R.id.nav_Vegetables:
-//                //Veg List
-//                Toast.makeText(getApplicationContext(), "Vegetables",Toast.LENGTH_SHORT).show();
-//                break;
-//
-//
-//            default:
-//                //unkown error
-//        }
-
-
         return super.onOptionsItemSelected(item);
-
     }
-
     //options Menu
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
-
-        getMenuInflater().inflate(R.menu.navigation_menu,menu);
-
-
+        getMenuInflater().inflate(R.menu.optionmenu,menu);
         return super.onCreateOptionsMenu(menu);
-
-
     }
-
-
-
-
-
     //Side Nav Button Control
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public  boolean onNavigationItemSelected(MenuItem item) {
+//        InputMethodManager inputMethodManager = (InputMethodManager)  this.getSystemService(Activity.INPUT_METHOD_SERVICE);
+//        inputMethodManager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
         int id = item.getItemId();
-
-        if (id == R.id.nav_Meat) {
-
+            if (id == R.id.nav_Meat) {
             AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainPage.this);
             mBuilder.setTitle("Meats");
             mBuilder.setMultiChoiceItems(Meats_Items, checkedIngredients_Meats, new DialogInterface.OnMultiChoiceClickListener() {
@@ -341,7 +304,6 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
                     }
                 }
             });
-
             AlertDialog mDialog = mBuilder.create();
             mDialog.show();
         }
@@ -394,15 +356,12 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
                         checkedIngredients_Fish[i] = false;
                         mUserItems_Fish.clear();
                         mIngredientsSelected.setText("");
-
                     }
                 }
             });
-
             AlertDialog mDialog = mBuilder.create();
             mDialog.show();
         }
-
         if (id == R.id.nav_Vegetables){
             AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainPage.this);
             mBuilder.setTitle("Vegetables");
@@ -452,24 +411,14 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
                         checkedIngredients_Veg[i] = false;
                         mUserItems_Veg.clear();
                         mIngredientsSelected.setText("");
-
                     }
                 }
             });
-
             AlertDialog mDialog = mBuilder.create();
             mDialog.show();
-
         }
-
-
-
-
-
         return true;
-
     }
-
     @Override
     public void onItemClick(int position) {
         Intent detailIntent = new Intent(this, RecipeInstructions.class);

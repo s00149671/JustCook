@@ -17,14 +17,24 @@ import static com.keegan.john.justcook.MainPage.EXTRA_Ingred;
         import android.widget.Button;
         import android.widget.ImageView;
 
-        import static com.keegan.john.justcook.R.layout.activity_recipe_instructions;
 
 public class RecipeInstructions extends AppCompatActivity {
+
+    //star display
+    private static ImageView FavImage;
+    private static Button FavButton;
+    private int Current_image;
+    int[] images = {R.drawable.star, R.drawable.star_off};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
+        buttonOnClick();
+
+        //back button
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         Intent intent = getIntent();
         String head = intent.getStringExtra(EXTRA_HEAD);
@@ -41,6 +51,22 @@ public class RecipeInstructions extends AppCompatActivity {
 
 
     }
+
+    //image switch
+    public void buttonOnClick() {
+        FavImage = (ImageView) findViewById(R.id.favImage);
+        FavButton = (Button) findViewById(R.id.FavButton);
+        FavButton.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Current_image++;
+                        Current_image = Current_image % images.length;
+                        FavImage.setImageResource(images[Current_image]);
+                    }
+                }
+        );
+    };
 
 
 }
