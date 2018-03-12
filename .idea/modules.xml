@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/JustCook.iml" filepath="$PROJECT_DIR$/JustCook.iml" />
+      <module fileurl="file://C:\Users\Johnk\AndroidStudioProjects\JustCook22\JustCook.iml" filepath="C:\Users\Johnk\AndroidStudioProjects\JustCook22\JustCook.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JustCook22.iml" filepath="$PROJECT_DIR$/JustCook22.iml" />
       <module fileurl="file://C:\Users\emily\Desktop\JustCook-final\JustCook\JustCook22.iml" filepath="C:\Users\emily\Desktop\JustCook-final\JustCook\JustCook22.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>

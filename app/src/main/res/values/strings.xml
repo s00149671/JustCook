@@ -1,269 +1,115 @@
 <resources>
-
-
-
-    <string-array name="Fish">
-
-    <item>Tuna</item>
-
-    <item>Salmon</item>
-
-    <item>Haddock</item>
-
-    <item>Cod</item>
-
-    <item>Anchovies</item>
-
-    <item>Catfish</item>
-
-    <item>Sardines</item>
-
-    <item>Snapper</item>
-
-    <item>Sea Bass</item>
-
-</string-array>
-
-
-    <string-array name="Meats">
-
-    <item>Chicken</item>
-
-    <item>Bacon</item>
-
-    <item>Sausage</item>
-
-    <item>Duck</item>
-
-    <item>Pork</item>
-
-    <item>Ground Beef</item>
-
-    <item>Turkey</item>
-
-    <item>Lamb</item>
-
-    <item>Pancetta</item>
-
-</string-array>
+    <string name="app_name">JustCook</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="Main">Main</string>
+    <string name="main_page">main page</string>
+    <string name="ingredience">ingredience</string>
+    <string name="button">Button</string>
 
 
     <string-array name="Vegitables">
+        <item>onion</item>
+        <item>garlic</item>
+        <item>carrot</item>
+        <item>tomato</item>
+        <item>bell Pepper</item>
+        <item>mushroom</item>
+        <item>broccoli</item>
+        <item>kale</item>
+        <item>chillie Pepper</item>
+    </string-array>
+
+    <string-array name="Meats">
+        <item>bacon</item>
+        <item>chicken</item>
+        <item>sausage</item>
+        <item>duck</item>
+        <item>pork</item>
+        <item>ground beef</item>
+        <item>turkey</item>
+        <item>lamb</item>
+        <item>pancetta</item>
+    </string-array>
+
+    <string-array name="Fish">
+        <item>tuna</item>
+        <item>salmon</item>
+        <item>haddock</item>
+        <item>cod</item>
+        <item>anchovies</item>
+        <item>catfish</item>
+        <item>sardines</item>
+        <item>snapper</item>
+        <item>sea Bass</item>
+    </string-array>
 
-    <item>Onion</item>
-
-    <item>Garlic</item>
-
-    <item>Carrot</item>
-
-    <item>Tomato</item>
-
-    <item>Bell Pepper</item>
-
-    <item>Mushroom</item>
-
-    <item>Broccoli</item>
-
-    <item>Kale</item>
-
-    <item>Chillie Pepper</item>
-
-</string-array>
-
-
-    <string-array name="list_preference_entries">
-
-    <item>Entry 1</item>
-
-    <item>Entry 2</item>
-
-    <item>Entry 3</item>
-
-</string-array>
-
-
-    <string-array name="list_preference_entry_values">
-
-    <item>1</item>
-
-    <item>2</item>
-
-    <item>3</item>
-
-</string-array>
-
-
-    <string-array name="pref_example_list_titles">
-
-    <item>Always</item>
-
-    <item>When possible</item>
-
-    <item>Never</item>
-
-</string-array>
-
-
-    <string-array name="pref_example_list_values">
-
-    <item>1</item>
-
-    <item>0</item>
-
-    <item>-1</item>
-
-</string-array>
-
-
-    <string-array name="pref_sync_frequency_titles">
-
-    <item>15 minutes</item>
-
-    <item>30 minutes</item>
-
-    <item>1 hour</item>
-
-    <item>3 hours</item>
-
-    <item>6 hours</item>
-
-    <item>Never</item>
-
-</string-array>
-
-
-    <string-array name="pref_sync_frequency_values">
-
-    <item>15</item>
-
-    <item>30</item>
-
-    <item>60</item>
-
-    <item>180</item>
-
-    <item>360</item>
-
-    <item>-1</item>
-
-</string-array>
-
-    <string name="app_name">JustCook</string>
-
-    <string name="open">Open</string>
-
-    <string name="close">Close</string>
-
-    <string name="Main">Main</string>
-
-    <string name="main_page">main page</string>
-
-    <string name="ingredience">ingredience</string>
-
-    <string name="button">Button</string>
-
-    <string name="submit">Submit</string>
-
-    <string name="create_account">Create Account</string>
-
-    <string name="forget_password">Forget Password</string>
-
-    <string name="enter_username">Enter Username</string>
-
-    <string name="enter_password">Enter Password</string>
-
-    <string name="enter_email_address">Enter Email Address</string>
-
-    <string name="profile">Profile</string>
-
-    <string name="log_out">Log Out</string>
-
-    <string name="title">Title :</string>
-
-    <string name="Ingredients">Ingredients :</string>
-
-    <string name="Favourite">Favourite</string>
-
-    <string name="search">Search</string>
-
-    <string name="ingredients_selection">Ingredients Selection</string>
-
-    <string name="text_view">TextView</string>
-
-    <string name="suitable_for">Suitable For:</string>
-
-    <string name="vegetarian">Vegetarian:</string>
-
-    <string name="vegan">Vegan:</string>
-
-    <string name="celiac">Celiac:</string>
-
-    <string name="nut_free">Nut Free:</string>
-
-    <string name="pescetarian">Pescetarian:</string>
-
-    <string name="diary_free">Diary Free:</string>
-
-    <string name="vegetarian_text">vegetarian</string>
-
-    <string name="vegan_text">vegan</string>
-
-    <string name="celiac_text">celiac</string>
-
-    <string name="nut_free_text">nut</string>
-
-    <string name="pescetarian_text">pescetarian</string>
-
-    <string name="diary_free_text">diary</string>
-
-    <string name="create_your_new_recipe">Create Your New Recipe</string>
-
-    <string name="name">Name</string>
-
-    <string name="description">Description</string>
-
-    <string name="vegan_check">Vegan</string>
-
-    <string name="vegetarian_check">Vegetarian</string>
-
-    <string name="celiac_check">Celiacs</string>
-
-    <string name="nut_free_check">Nut Free</string>
-
-    <string name="pescetarian_check">Pescetarian</string>
-
-    <string name="diary_free_check">Diary Free</string>
-
-    <string name="add_image">Add Image</string>
-
-    <string name="select_image">Select Image</string>
-
-    <string name="vegetables">Vegetables</string>
-
-    <string name="meat">Meat</string>
-
-    <string name="fish">Fish</string>
 
     <string name="title_activity_settings">Settings</string>
 
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
     <string name="pref_header_general">General</string>
 
     <string name="pref_title_social_recommendations">Enable social recommendations</string>
-
-    <string name="pref_description_social_recommendations">Recommendations for people to contact based on your message history </string>
+    <string name="pref_description_social_recommendations">Recommendations for people to contact
+        based on your message history
+    </string>
 
     <string name="pref_title_display_name">Display name</string>
-
     <string name="pref_default_display_name">John Smith</string>
 
     <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
 
-    <string name="pref_header_data_sync">Data And sync</string>
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
 
     <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string-array name="list_preference_entries">
+        <item>Entry 1</item>
+        <item>Entry 2</item>
+        <item>Entry 3</item>
+    </string-array>
+
+    <string-array name="list_preference_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="multi_select_list_preference_default_value" />
 
     <string name="pref_title_system_sync_settings">System sync settings</string>
 
+    <!-- Example settings for Notifications -->
     <string name="pref_header_notifications">Notifications</string>
 
     <string name="pref_title_new_message_notifications">New message notifications</string>
@@ -273,6 +119,6 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
-
+    <string name="vegetables">Vegetables</string>
     <string name="pizza">TODO</string>
 </resources>
