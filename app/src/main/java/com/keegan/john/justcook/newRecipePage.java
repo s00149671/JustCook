@@ -133,7 +133,7 @@ public class newRecipePage extends AppCompatActivity {
         //image
         ivImage = (ImageView)findViewById(R.id.ivImage);
         //ingredients text view
-        mIngredientsSelected = (TextView) findViewById(R.id.ingredientsView);
+        mIngredientsSelected = (TextView) findViewById(R.id.ingredientsListView);
 
         selectIngredients.setOnClickListener(new View.OnClickListener() {
             @Override
