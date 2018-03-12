@@ -50,6 +50,7 @@ public class RecipeInstructions extends AppCompatActivity {
         textView1.setText(ingred);
 
 
+
     }
 
     //image switch

@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * Created by emily on 06/03/2018.
  */
@@ -36,6 +40,14 @@ public class RecipeDisplay extends AppCompatActivity{
         Boolean checkboxDairyFree = getIntent().getExtras().getBoolean("checkboxDairyFree");
 
 
+        //creating variables for the ingredients passed through intent from the activity newRecipePage
+        ArrayList<String> Ingredients_List = new ArrayList<String>();
+        Ingredients_List = intent.getStringArrayListExtra("Ingredient_List");
+        //assiging to a text view
+
+
+
+
         //receiving image
         ImageView imageBox;
         imageBox = (ImageView)findViewById(R.id.imageBox);
@@ -47,11 +59,21 @@ public class RecipeDisplay extends AppCompatActivity{
 
         // ImageView.setImageBitmap(bmp );
 
-        //assigning the passed data variables to the textView
+        //assigning the name, description and ingredients views to a variable
         TextView nameView=(TextView) findViewById(R.id.nameView);
         nameView.setText(recipeName);
         TextView descriptionView=(TextView) findViewById(R.id.descriptionView);
         descriptionView.setText(recipeDescription);
+        TextView ingredientsView=(TextView) findViewById(R.id.ingredientsView);
+        for (int i=0; i<Ingredients_List.size();i++){
+            ingredientsView.append(Ingredients_List.get(i));
+            ingredientsView.append("\n");
+        }
+        //setContentView(LinearLayoutView);
+
+
+        // ingredientsView.setText(Arrays.toString(Ingredients_List).replaceAll("\\[|\\]", ""));
+      //  ingredientsView.set(Ingredients_List);
 
         //assigning checkboxes individually
         TextView vegetarianTxt =(TextView) findViewById(R.id.vegetarianText);

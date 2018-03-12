@@ -142,7 +142,8 @@ public class MainPage extends AppCompatActivity implements MyAdapter.OnItemClick
             });
         //Ingrediance choicen is being displayed
         mIngredientsSelected = (TextView) findViewById(R.id.tvVeg);
-        //passing the check box values for vegitables
+
+        //passing the check box values for vegetables
         Vegetables_Items = getResources().getStringArray(R.array.Vegitables);
         checkedIngredients_Veg = new boolean[Vegetables_Items.length];
         //passing the check box values for Meats

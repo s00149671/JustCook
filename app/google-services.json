@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "137468040195-h7huqnicdmdt9uac7962bp8tcdap2tat.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.keegan.john.justcook",
+            "certificate_hash": "888c012dfc5072bd88fab0e94d83ddee3bd98299"
+          }
+        },
+        {
           "client_id": "137468040195-elesfhn36iqmbkblmtr0f0pc78jvn5nj.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
