@@ -102,7 +102,9 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textMultiLine"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed bibendum varius massa, vitae lobortis felis maximus ac. Mauris nibh sem, malesuada nec tempus ac, imperdiet sed massa. Phasellus vitae nisl vitae diam maximus consequat. Praesent a tortor ac metus efficitur molestie. Suspendisse ac consectetur lacus, ac pulvinar tortor. Fusce vestibulum nunc quis velit convallis pulvinar. Nam vel consectetur neque. Aliquam elementum libero sed luctus posuere. Vestibulum fermentum, orci vel cursus ullamcorper, velit enim volutpat metus, at vulputate lectus eros non dolor. Sed auctor odio at consectetur porta. Duis hendrerit sagittis velit, vel lobortis diam venenatis ac. In maximus lorem a neque accumsan euismod. Sed nec risus sagittis, tincidunt arcu eu, volutpat augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet pellentesque rhoncus. Curabitur porta imperdiet viverra."
+        android:text="Add sugar, corn starch, flour and salt to a large bowl and mix.
+Cut butter into smallish bits and rub into the mix. You will know when it's done when it's a sandy texture.
+Put in a tray, press it all down until its even and solid. Make sure it is no thicker than an inch or the inside will not be cooked."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText4" />

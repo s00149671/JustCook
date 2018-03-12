@@ -112,21 +112,16 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/navigation_header">
 
+
+
         <Button
             android:id="@+id/IngredianceSearch"
             android:layout_width="match_parent"
             android:layout_height="30dp"
+            android:layout_gravity="bottom"
             android:layout_margin="55dp"
-            android:text="Search"
             android:background="@drawable/rounded_button"
-            android:layout_gravity="bottom"/>
-
-
-
-
-
-
-
+            android:text="Search" />
 
 
     </android.support.design.widget.NavigationView>

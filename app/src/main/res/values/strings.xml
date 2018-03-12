@@ -9,31 +9,31 @@
 
 
     <string-array name="Vegitables">
-        <item>onion</item>
         <item>garlic</item>
+        <item>onion</item>
         <item>carrot</item>
         <item>tomato</item>
-        <item>bell Pepper</item>
+        <item>bell pepper</item>
         <item>mushroom</item>
         <item>broccoli</item>
         <item>kale</item>
-        <item>chillie Pepper</item>
+        <item>chilli pepper</item>
     </string-array>
 
     <string-array name="Meats">
-        <item>chicken</item>
         <item>bacon</item>
+        <item>chicken</item>
         <item>sausage</item>
         <item>duck</item>
         <item>pork</item>
-        <item>ground Beef</item>
+        <item>ground beef</item>
         <item>turkey</item>
         <item>lamb</item>
         <item>pancetta</item>
     </string-array>
 
     <string-array name="Fish">
-        <item>tuna</item>
+        <item>salt</item>
         <item>salmon</item>
         <item>haddock</item>
         <item>cod</item>
@@ -41,7 +41,7 @@
         <item>catfish</item>
         <item>sardines</item>
         <item>snapper</item>
-        <item>sea Bass</item>
+        <item>sea bass</item>
     </string-array>
 
 
