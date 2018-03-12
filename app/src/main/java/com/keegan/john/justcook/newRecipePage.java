@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import android.support.design.widget.FloatingActionButton;
@@ -41,6 +42,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+
 /**
  * Created by emily on 06/03/2018.
  */
@@ -50,10 +56,25 @@ public class newRecipePage extends AppCompatActivity {
     private CheckBox checkboxVegetarian, checkboxVegan, checkboxCeliac, checkboxPescetarian, checkboxNutFree, checkboxDairyFree;
     private EditText recipeName, recipeDescription;
     private FloatingActionButton saveRecipeButton;
-    private Button imageButton;
+    private Button imageButton, selectIngredients;
+
+    DatabaseReference databaseReference;
 
     ImageView ivImage;
     Integer REQUEST_CAMERA=1, SELECT_FILE=0;
+
+    //alert dialog arrays
+    ArrayList<String> Ingredients_All = new ArrayList<String>();
+    TextView mIngredientsSelected;
+    String[] Vegetables_Items;
+    String[] Meats_Items;
+    String[] Fish_Items;
+    boolean[] checkedIngredients_Meats;
+    boolean[] checkedIngredients_Fish;
+    boolean[] checkedIngredients_Veg;
+    ArrayList<Integer> mUserItems_Meats = new ArrayList<>();
+    ArrayList<Integer> mUserItems_Fish = new ArrayList<>();
+    ArrayList<Integer> mUserItems_Veg = new ArrayList<>();
 
     //intent variables
     public static final String EXTRA_NAME = "EXTRA_NAME";
@@ -64,6 +85,20 @@ public class newRecipePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipepage_new);
         addListenerOnButton();
+
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Recipes");
+
+        //passing the check box values for vegetables
+        Vegetables_Items = getResources().getStringArray(R.array.Vegitables);
+        checkedIngredients_Veg = new boolean[Vegetables_Items.length];
+
+        //passing the check box values for Meats
+        Meats_Items = getResources().getStringArray(R.array.Meats);
+        checkedIngredients_Meats = new boolean[Meats_Items.length];
+
+        //passing the check box values for Fish
+        Fish_Items = getResources().getStringArray(R.array.Fish);
+        checkedIngredients_Fish = new boolean[Fish_Items.length];
 
         imageButton = (Button) findViewById(R.id.imageButton);
         imageButton.setOnClickListener(new View.OnClickListener() {
@@ -92,8 +127,211 @@ public class newRecipePage extends AppCompatActivity {
         recipeDescription = (EditText) findViewById(R.id.recipeDescription);
         //assigning main create recipe button to variable
         saveRecipeButton = (FloatingActionButton) findViewById(R.id.saveButton);
+        selectIngredients =(Button) findViewById(R.id.ingredientsbutton);
         //image
         ivImage = (ImageView)findViewById(R.id.ivImage);
+
+        selectIngredients.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                final CharSequence[] items = {"Meat", "Fish", "Vegetables", "Cancel"};
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(newRecipePage.this);
+
+                builder.setTitle("Add Ingredients");
+
+                builder.setItems(items, new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if (items[i].equals("Meat")) {
+                            AlertDialog.Builder mBuilder = new AlertDialog.Builder(newRecipePage.this);
+                            mBuilder.setTitle("Meats");
+                            mBuilder.setMultiChoiceItems(Meats_Items, checkedIngredients_Meats, new DialogInterface.OnMultiChoiceClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int position, boolean isChecked) {
+                                    if (isChecked) {
+                                        if (!mUserItems_Meats.contains(position)) {
+                                            mUserItems_Meats.add(position);
+                                        } else if (mUserItems_Meats.contains(position)) {
+                                            mUserItems_Meats.remove(position);
+                                        }
+                                    }
+                                }
+                            });
+                            mBuilder.setCancelable(false);
+                            mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int which) {
+                                    String item = "";
+                                    for (int i = 0; i < mUserItems_Meats.size(); i++) {
+                                        item = item + Meats_Items[mUserItems_Meats.get(i)];
+                                        //check to see if it is the last item. add "," if its not the last item
+                                        if (i != mUserItems_Meats.size() - 1) ;
+                                        {
+                                            item = item + ",";
+                                        }
+                                    }
+                                    mIngredientsSelected.setText(item);
+                                    Ingredients_All.add(item);
+                                }
+                            });
+                            mBuilder.setNegativeButton("Dismiss", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.dismiss();
+                                }
+                            });
+                            //clear btn
+                            mBuilder.setNeutralButton("Clear all", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int which) {
+                                    for (int i = 0; i < checkedIngredients_Meats.length; i++) {
+                                        checkedIngredients_Meats[i] = false;
+                                        mUserItems_Meats.clear();
+                                        mIngredientsSelected.setText("");
+
+                                    }
+                                }
+                            });
+
+                            AlertDialog mDialog = mBuilder.create();
+                            mDialog.show();
+
+
+                        } else if (items[i].equals("Fish")) {
+                            AlertDialog.Builder mBuilder = new AlertDialog.Builder(newRecipePage.this);
+                            mBuilder.setTitle("Fish");
+                            mBuilder.setMultiChoiceItems(Fish_Items, checkedIngredients_Fish, new DialogInterface.OnMultiChoiceClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int position, boolean isChecked) {
+                                    if(isChecked){
+                                        if(!mUserItems_Fish.contains(position))
+                                        {
+                                            mUserItems_Fish.add(position);
+                                        }
+                                        else if (mUserItems_Fish.contains(position)){
+                                            mUserItems_Fish.remove(position);
+                                        }
+                                    }
+                                }
+                            });
+                            mBuilder.setCancelable(false);
+                            mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int which) {
+                                    String item = "";
+                                    for(int i = 0; i < mUserItems_Fish.size(); i++)
+                                    {
+                                        item = item + Fish_Items[mUserItems_Fish.get(i)];
+                                        //check to see if it is the last item. add "," if its not the last item
+                                        if(i != mUserItems_Fish.size() -1);
+                                        {
+                                            item = item + ",";
+
+                                        }
+                                    }
+                                    mIngredientsSelected.setText(item);
+                                    Ingredients_All.add(item);
+
+                                }
+                            });
+                            mBuilder.setNegativeButton("Dismiss", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.dismiss();
+                                }
+                            });
+                            //clear btn
+                            mBuilder.setNeutralButton("Clear all", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int which) {
+                                    for(int i = 0; i< checkedIngredients_Fish.length; i++)
+                                    {
+                                        checkedIngredients_Fish[i] = false;
+                                        mUserItems_Fish.clear();
+                                        mIngredientsSelected.setText("");
+
+                                    }
+                                }
+                            });
+
+                            AlertDialog mDialog = mBuilder.create();
+                            mDialog.show();
+
+                        } else if (items[i].equals("Vegetables")) {
+                            AlertDialog.Builder mBuilder = new AlertDialog.Builder(newRecipePage.this);
+                            mBuilder.setTitle("Vegetables");
+                            mBuilder.setMultiChoiceItems(Vegetables_Items, checkedIngredients_Veg, new DialogInterface.OnMultiChoiceClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int position, boolean isChecked) {
+                                    if(isChecked){
+                                        if(!mUserItems_Veg.contains(position))
+                                        {
+                                            mUserItems_Veg.add(position);
+                                        }
+                                        else if (mUserItems_Veg.contains(position)){
+                                            mUserItems_Veg.remove(position);
+                                        }
+                                    }
+                                }
+                            });
+                            mBuilder.setCancelable(false);
+                            mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int which) {
+                                    String item = "";
+                                    for(int i = 0; i < mUserItems_Veg.size(); i++)
+                                    {
+                                        item = item + Vegetables_Items[mUserItems_Veg.get(i)];
+                                        //check to see if it is the last item. add "," if its not the last item
+                                        if(i != mUserItems_Veg.size() -1);
+                                        {
+                                            item = item + ",";
+                                        }
+                                    }
+                                    mIngredientsSelected.setText(item);
+                                    Ingredients_All.add(item);
+
+                                }
+                            });
+                            mBuilder.setNegativeButton("Dismiss", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.dismiss();
+                                }
+                            });
+                            //clear btn
+                            mBuilder.setNeutralButton("Clear all", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int which) {
+                                    for(int i = 0; i< checkedIngredients_Veg.length; i++)
+                                    {
+                                        checkedIngredients_Veg[i] = false;
+                                        mUserItems_Veg.clear();
+                                        mIngredientsSelected.setText("");
+
+                                    }
+                                }
+                            });
+
+                            AlertDialog mDialog = mBuilder.create();
+                            mDialog.show();
+
+
+                        } else if (items[i].equals("Cancel")) {
+                            dialogInterface.dismiss();
+                        }
+                    }
+                });
+                builder.show();
+
+
+            }
+
+        });
+
 
 
         saveRecipeButton.setOnClickListener(new View.OnClickListener() {
@@ -109,18 +347,25 @@ public class newRecipePage extends AppCompatActivity {
                 result.append(checkboxNutFree.isChecked());
                 result.append(checkboxDairyFree.isChecked());
 
-                //String checkedCheckboxes = new String();
-
-                //Hashtable<String,Boolean> example = new Hashtable<>();
-                //example.put("vegetarian", checkboxVegetarian.isChecked());
-                //  example.get
-                //example.get("vegetarian");
-
 
                 //adding the values of edit text to string variables
                 //this will allow it to be pushed between activities
                 String EXTRA_NAME = recipeName.getText().toString();
                 String EXTRA_DESC = recipeDescription.getText().toString();
+
+                //passing the variables for the new recipe into the NewRecipe Class
+                /* Create recipe object using constructor */
+                NewRecipe recipenew = new NewRecipe(EXTRA_NAME);
+
+                // Invoking methods for each object created
+                recipenew.recipeDescription(EXTRA_DESC);
+                recipenew.recipeIngredientsList(Ingredients_All);
+                recipenew.checkboxes(checkboxVegetarian.isChecked(),checkboxVegan.isChecked(),
+                        checkboxCeliac.isChecked(),checkboxPescetarian.isChecked(),
+                        checkboxNutFree.isChecked(),checkboxDairyFree.isChecked());
+
+
+
 
 
 
@@ -140,6 +385,7 @@ public class newRecipePage extends AppCompatActivity {
 
 
                 // myIntent.putExtra("checkedCheckboxes", checkedCheckboxes);
+                myIntent.putExtra("ingredients", Ingredients_All );
 
                 //passing the image
                 ivImage.buildDrawingCache();
@@ -154,7 +400,11 @@ public class newRecipePage extends AppCompatActivity {
             }
 
         });
+
+
     }
+
+
 
     private void SelectImage(){
 
@@ -207,8 +457,80 @@ public class newRecipePage extends AppCompatActivity {
             }
 
         }
+    }
+
+    public void AddData(ArrayList Ingredients_All){
+
+        String Name = recipeName.getText().toString().trim();
+        String Description = recipeDescription.getText().toString().trim();
+        Boolean Vegetarian = checkboxVegetarian.isChecked();
+        Boolean Vegan =  checkboxVegan.isChecked();
+        Boolean Celiac = checkboxCeliac.isChecked();
+        Boolean Pescetarian = checkboxPescetarian.isChecked();
+        Boolean nutFree = checkboxNutFree.isChecked();
+        Boolean dairyFree = checkboxDairyFree.isChecked();
+        ArrayList<String> ingredients_List =  Ingredients_All;
+
+      //  SaveNewRecipeData savedata = new SaveNewRecipeData(Name, Description,
+              //  ingredients_List,  Vegetarian,
+            //    Vegan, Celiac, Pescetarian,nutFree, dairyFree);
 
 
 
     }
+
 }
+ class NewRecipe {
+
+     String Name;
+     String Description;
+     Boolean Vegan;
+     Boolean Vegetarian;
+     Boolean Pescetarian;
+     Boolean Celiac;
+     Boolean NutFree;
+     Boolean DairyFree;
+     ArrayList<String> ingredients_list = new ArrayList<String>();
+
+
+
+
+     // This is the constructor of the class NewRecipe
+     public NewRecipe(String name) {
+        name = Name;
+     }
+
+
+
+     /* Assign the recipe description to the variable designation.*/
+     public void recipeDescription(String description) {
+         description = Description;
+     }
+
+     /* Assign the image to the variable*/
+     public void recipeImage(String image) {
+
+         //allow for passing of image *********
+     }
+
+     public void checkboxes(Boolean vegetarian, Boolean vegan, Boolean celiac, Boolean pesscetarian, Boolean nutfree, Boolean dairyfree){
+
+         vegetarian = Vegetarian;
+         vegan = Vegan;
+         celiac = Celiac;
+         pesscetarian = Pescetarian;
+         nutfree = NutFree;
+         dairyfree = DairyFree;
+     }
+
+
+     /* Assign the ingredients list array to the variable*/
+     public void recipeIngredientsList(ArrayList<String> Ingredient_List) {
+
+         ingredients_list = Ingredient_List;
+         //allow for passing of Ingredient_List list array *********
+     }
+
+
+
+ }
