@@ -384,7 +384,7 @@ public class newRecipePage extends AppCompatActivity {
                 //sending over each checkbox individually
                 myIntent.putExtra("checkboxVegetarian", checkboxVegetarian.isChecked());
                 myIntent.putExtra("checkboxVegan", checkboxVegan.isChecked());
-                myIntent.putExtra("checkboxCeliac", checkboxCeliac.isChecked());
+               // myIntent.putExtra("checkboxCeliac", checkboxCeliac.isChecked());
                 myIntent.putExtra("checkboxPescetarian", checkboxPescetarian.isChecked());
                 myIntent.putExtra("checkboxNutFree", checkboxNutFree.isChecked());
                 myIntent.putExtra("checkboxDairyFree", checkboxDairyFree.isChecked());
@@ -401,7 +401,10 @@ public class newRecipePage extends AppCompatActivity {
                 imageBundle.putParcelable("imagebitmap", image);
                 myIntent.putExtras(imageBundle);
 
+                //Saving the new recipe to database using firebase (method below)
+         //       AddData(Ingredients_All);
 
+                //starting next activity
                 startActivity(myIntent);
             }
 
@@ -471,16 +474,17 @@ public class newRecipePage extends AppCompatActivity {
         String Description = recipeDescription.getText().toString().trim();
         Boolean Vegetarian = checkboxVegetarian.isChecked();
         Boolean Vegan =  checkboxVegan.isChecked();
-        Boolean Celiac = checkboxCeliac.isChecked();
+       //Boolean Celiac = checkboxCeliac.isChecked();
         Boolean Pescetarian = checkboxPescetarian.isChecked();
         Boolean nutFree = checkboxNutFree.isChecked();
         Boolean dairyFree = checkboxDairyFree.isChecked();
         ArrayList<String> ingredients_List =  Ingredients_All;
 
-     //  SaveNewRecipeData savedata = new SaveNewRecipeData(Name, Description,
-          //     ingredients_List,  Vegetarian,
-            //   Vegan, Celiac, Pescetarian,nutFree, dairyFree);
+        SaveNewRecipeData savedata = new SaveNewRecipeData(Name, Description,
+                ingredients_List,  Vegetarian,
+                Vegan, Pescetarian,nutFree, dairyFree);
 
+       // databaseReference.setValue(savedata);
 
 
     }
