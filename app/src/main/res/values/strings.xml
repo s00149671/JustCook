@@ -9,15 +9,15 @@
 
 
     <string-array name="Vegitables">
-        <item>garlic</item>
         <item>onion</item>
+        <item>garlic</item>
         <item>carrot</item>
         <item>tomato</item>
-        <item>bell pepper</item>
+        <item>bell Pepper</item>
         <item>mushroom</item>
         <item>broccoli</item>
         <item>kale</item>
-        <item>chilli pepper</item>
+        <item>chillie Pepper</item>
     </string-array>
 
     <string-array name="Meats">
@@ -33,7 +33,7 @@
     </string-array>
 
     <string-array name="Fish">
-        <item>salt</item>
+        <item>tuna</item>
         <item>salmon</item>
         <item>haddock</item>
         <item>cod</item>
@@ -41,7 +41,7 @@
         <item>catfish</item>
         <item>sardines</item>
         <item>snapper</item>
-        <item>sea bass</item>
+        <item>sea Bass</item>
     </string-array>
 
 
@@ -115,6 +115,7 @@
     <string name="pref_title_new_message_notifications">New message notifications</string>
 
     <string name="pref_title_ringtone">Ringtone</string>
+
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>

@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+    <resources>
+
+
+    <string-array name="Fish">
+
+    <item>マグロ</item>
+
+    <item>鮭</item>
+
+    <item>Haddock</item>
+
+    <item>コード</item>
+
+    <item>アンチョビ</item>
+
+    <item>ナマズ</item>
+
+    <item>イワシ</item>
+
+    <item>金目鯛</item>
+
+    <item>シーバス</item>
+
+</string-array>
+
+
+    <string-array name="Meats">
+
+    <item>鶏</item>
+
+    <item>ベーコン</item>
+
+    <item>ソーセージ</item>
+
+    <item>鴨</item>
+
+    <item>豚肉</item>
+
+    <item>牛</item>
+
+    <item>トルコ</item>
+
+    <item>羊</item>
+
+    <item>パンチェッタ</item>
+
+</string-array>
+
+
+    <string-array name="Vegitables">
+
+    <item>玉ねぎ</item>
+
+    <item>ニンニク</item>
+
+    <item>ニンジン</item>
+
+    <item>トマト</item>
+
+    <item>ベルPepper</item>
+
+    <item>きのこ</item>
+
+    <item>ブロッコリー</item>
+
+    <item>青</item>
+
+    <item>Chillie Pepper</item>
+
+</string-array>
+
+
+    <string-array name="list_preference_entries">
+
+    <item>入力1</item>
+
+    <item>入力2</item>
+
+    <item>登録3</item>
+
+</string-array>
+
+
+    <string-array name="list_preference_entry_values">
+
+    <item>一つ</item>
+
+    <item>二つの</item>
+
+    <item>三</item>
+
+</string-array>
+
+
+    <string-array name="pref_example_list_titles">
+
+    <item>常に</item>
+
+    <item>可能な場合</item>
+
+    <item>ない</item>
+
+</string-array>
+
+
+    <string-array name="pref_example_list_values">
+
+    <item>一つ</item>
+
+    <item>0</item>
+
+    <item>-1</item>
+
+</string-array>
+
+
+    <string-array name="pref_sync_frequency_titles">
+
+    <item>15分</item>
+
+    <item>30分</item>
+
+    <item>1時間</item>
+
+    <item>3時間</item>
+
+    <item>6時間</item>
+
+    <item>ない</item>
+
+</string-array>
+
+
+    <string-array name="pref_sync_frequency_values">
+
+    <item>五</item>
+
+    <item>三十</item>
+
+    <item>暦</item>
+
+    <item>百八十</item>
+
+    <item>ろう</item>
+
+    <item>-1</item>
+
+</string-array>
+
+    <string name="app_name">JustCook</string>
+
+    <string name="open">開いた</string>
+
+    <string name="close">近</string>
+
+    <string name="Main">主</string>
+
+    <string name="main_page">メインページ</string>
+
+    <string name="ingredience">ingredience</string>
+
+    <string name="button">ボタン</string>
+
+    <string name="submit">提出</string>
+
+    <string name="create_account">アカウントを作成する</string>
+
+    <string name="forget_password">パスワードを忘れ</string>
+
+    <string name="enter_username">ユーザー名を入力</string>
+
+    <string name="enter_password">パスワードを入力</string>
+
+    <string name="enter_email_address">メールアドレスを入力し</string>
+
+    <string name="profile">概要</string>
+
+    <string name="log_out">ログアウト</string>
+
+    <string name="title">タイトル:</string>
+
+    <string name="Ingredients">原材料：</string>
+
+    <string name="Favourite">気に入り</string>
+
+    <string name="search">検索</string>
+
+    <string name="ingredients_selection">素材の選択</string>
+
+    <string name="text_view">TextView</string>
+
+    <string name="suitable_for">に適した:</string>
+
+    <string name="vegetarian">ベジタリアン:</string>
+
+    <string name="vegan">ヴィーガン:</string>
+
+    <string name="celiac">腹腔:</string>
+
+    <string name="nut_free">ナット無料</string>
+
+    <string name="pescetarian">Pescetarian:</string>
+
+    <string name="diary_free">日記を無料：</string>
+
+    <string name="vegetarian_text">ベジタリアン</string>
+
+    <string name="vegan_text">ヴィーガン</string>
+
+    <string name="celiac_text">腹腔</string>
+
+    <string name="nut_free_text">ナット</string>
+
+    <string name="pescetarian_text">pescetarian</string>
+
+    <string name="diary_free_text">日記</string>
+
+    <string name="create_your_new_recipe">を新しいレシピ</string>
+
+    <string name="name">名称</string>
+
+    <string name="description">説明</string>
+
+    <string name="vegan_check">ヴィーガン</string>
+
+    <string name="vegetarian_check">ベジタリアン</string>
+
+    <string name="celiac_check">Celiacs</string>
+
+    <string name="nut_free_check">ナット無料</string>
+
+    <string name="pescetarian_check">Pescetarian</string>
+
+    <string name="diary_free_check">日記を無料</string>
+
+    <string name="add_image">画像付加</string>
+
+    <string name="select_image">画像選択</string>
+
+    <string name="vegetables">野菜</string>
+
+    <string name="meat">肉</string>
+
+    <string name="fish">魚</string>
+
+    <string name="title_activity_settings">設定</string>
+
+    <string name="pref_header_general">一般</string>
+
+    <string name="pref_title_social_recommendations">社会の勧告</string>
+
+    <string name="pref_description_social_recommendations">提案連絡を取り合うために に基づくメッセージの歴史</string>
+
+    <string name="pref_title_display_name">表示名</string>
+
+    <string name="pref_default_display_name">ジョンスミス</string>
+
+    <string name="pref_title_add_friends_to_messages">追加友人へのメッセージ</string>
+
+    <string name="pref_header_data_sync">データ同期</string>
+
+    <string name="pref_title_sync_frequency">同期周波数</string>
+
+    <string name="pref_title_system_sync_settings">システムの同期の設定</string>
+
+    <string name="pref_header_notifications">通知</string>
+
+    <string name="pref_title_new_message_notifications">新しいメッセージ通知</string>
+
+    <string name="pref_title_ringtone">着信音に</string>
+
+    <string name="pref_ringtone_silent">黙</string>
+
+    <string name="pref_title_vibrate">振動</string>
+
+    <string name="pizza">TODO</string>
+
+</resources>
